@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 const generateDots = (count: number) =>
     Array.from({length: count}, (_, i) => ({
         id: i,
-        size: Math.random() * 4 + 2,
+        size: Math.random() * 8 + 2,
         x: Math.random() * 100,
         y: Math.random() * 100,
         duration: Math.random() * 10 + 15,
