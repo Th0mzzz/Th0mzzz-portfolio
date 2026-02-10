@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import "./globals.css";
 import React from "react";
+import AnimatedBackground from "@/components/animateBackground";
 
 export const metadata: Metadata = {
     title: "Th0mzzz",
@@ -13,10 +14,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="pt-br">
         <body
             className={`antialiased`}
         >
+        <AnimatedBackground/>
         {children}
         </body>
         </html>
