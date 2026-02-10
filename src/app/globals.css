@@ -1,33 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
 :root {
-    --background: #F8F8F8;
-    --foreground: #FFFFFF;
-    --aligment: 1240px;
-    --border: 1px solid rgba(25, 26, 41, 0.6);
-    --primary: #FF3131;
-    --text: #191A29;
-    --ff-text: 'Raleway', Helvetica, sans-serif;
-    --ff-link: 'Montserrat', Helvetica, sans-serif;
-    --ff-title: 'Montserrat', Helvetica, sans-serif;
-    --ff-subtitle: 'Raleway', Helvetica, sans-serif;
-}
-
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #191A29;
-        --foreground: #101019;
-        --border: 1px solid rgba(255, 255, 255, 0.6);
-        --primary: #FF3131;
-        --text: #FFFFFF;
-    }
+  --background: #f8f8f8;
+  --foreground: #ffffff;
+  --alignment: 1240px;
+  --border: rgba(25, 26, 41, 0.6);
+  --primary: #ff3131;
+  --text: #191a29;
+  --ff-text: "Raleway", Helvetica, sans-serif;
+  --ff-link: "Montserrat", Verdana, sans-serif;
+  --ff-title: "Montserrat", Helvetica, sans-serif;
+  --ff-subtitle: "Raleway", Helvetica, sans-serif;
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text {
+  font-size: clamp(12px, calc(12px + 0.25vw), 14px);
+  color: var(--text);
+  font-family: var(--ff-text);
+}
+
+.link {
+  font-size: clamp(13px, calc(13px + 0.3vw), 15px);
+  color: var(--text);
+  font-family: var(--ff-link);
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: clamp(18px, calc(18px + 0.45vw), 22px);
+  color: var(--text);
+  font-family: var(--ff-subtitle);
+}
+
+.title {
+  font-size: clamp(20px, calc(20px + 0.6vw), 30px);
+  color: var(--text);
+  font-family: var(--ff-title);
+}
+
+.supertitle {
+  font-size: clamp(26px, calc(26px + 0.9vw), 40px);
+  color: var(--text);
+  font-family: var(--ff-title);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --alignment: 90%;
+  }
 }
