@@ -9,9 +9,14 @@ import { gliker } from "@/lib/fonts";
 export const metadata: Metadata = {
     title: "Th0mzzz",
     description: "Eu sou Thomaz, um desenvolvedor Full Stack apaixonado por tecnologia e inovação e esse é meu portifólio profissional.",
-
+    icons: {
+        icon: '/th0mzzz-logo-sm.png',
+        shortcut: '/th0mzzz-logo-sm.png',
+        apple: '/th0mzzz-logo-sm.png',
+    },
     
 };
+
 
 export default function RootLayout({
     children,
@@ -20,7 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pt-br" suppressHydrationWarning>
-        
+            
             <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
                 <GlobalContextProvider>
                     <AnimatedBackground />
