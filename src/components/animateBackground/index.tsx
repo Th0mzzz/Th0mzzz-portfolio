@@ -84,7 +84,7 @@ const DotParticle = memo(function DotParticle({ dot, mouseX, mouseY }: { dot: Do
 
 export default function AnimatedBackground() {
     const [dots, setDots] = useState<ReturnType<typeof generateDots>>([]);
-    const rafRef = useRef<number>();
+    const rafRef = useRef<number>(null);
     const lastTimeRef = useRef(0);
 
     const mouseXPct = useMotionValue(-1000);
