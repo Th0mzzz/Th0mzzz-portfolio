@@ -71,6 +71,10 @@ body {
   color: var(--text);
   font-family: var(--ff-title);
 }
+.font-gliker {
+  font-family: var(--font-gliker);
+  line-height: 1.5;
+}
 
 @media (max-width: 768px) {
   :root {

@@ -120,7 +120,7 @@ export default function AnimatedBackground() {
         };
     }, []);
     return (
-        <div className="fixed inset-0 -z-10 overflow-hidden" onMouseMove={handlers.onMouseMove} onMouseLeave={handlers.onMouseLeave}>
+        <div className="fixed inset-0 overflow-hidden" onMouseMove={handlers.onMouseMove} onMouseLeave={handlers.onMouseLeave}>
             {dots.map((dot) => (
                 <DotParticle key={dot.id} dot={dot} mouseX={mouseXPct} mouseY={mouseYPct} />
             ))}

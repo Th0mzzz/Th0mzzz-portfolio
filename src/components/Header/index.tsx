@@ -48,7 +48,7 @@ export default function Header() {
                         className="lg:hidden"
                         onClick={() => setOpenMenu(!openMenu)}
                         aria-label="Abrir menu"
-                    >``
+                    >
                         <HiOutlineMenuAlt4 size={45} className="text-[var(--text)]" />
                     </button>
 
@@ -102,10 +102,10 @@ export default function Header() {
                     {/* Mobile Menu */}
                     <motion.div
                         className="lg:hidden fixed top-25 left-0 w-full bg-[#ffffff16] backdrop-blur-md rounded-2xl p-6 shadow-lg z-50 border border-[var(--border)]"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={openMenu ? { opacity: 1, y: 20 } : { opacity: 0, y: -20 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        style={{ display: openMenu ? 'block' : 'none' }}
+                        initial={{ opacity: 0, y: -20, display: "none" }}
+                        animate={openMenu ? { opacity: 1, y: 20, display:"block" } : { opacity: 0, y: -20 , display: "none"}}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        
                     >
                         <ul className="flex flex-col items-start gap-6">
                             {[
@@ -134,6 +134,7 @@ export default function Header() {
                                     whileTap={{ scale: 0.9 }}
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                 >
+
                                     <HiOutlineMoon size={25} className="theme-icon theme-icon--light h-fit" aria-hidden="true" />
                                     <HiOutlineSun size={25} className="theme-icon theme-icon--dark h-fit" aria-hidden="true" />
                                 </motion.button>

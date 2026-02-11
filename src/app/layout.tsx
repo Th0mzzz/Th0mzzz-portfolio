@@ -4,6 +4,7 @@ import React from "react";
 import AnimatedBackground from "@/components/animateBackground";
 import Header from "@/components/Header";
 import GlobalContextProvider from "@/context/global";
+import { gliker } from "@/lib/fonts";
 
 export const metadata: Metadata = {
     title: "Th0mzzz",
@@ -20,7 +21,7 @@ export default function RootLayout({
     return (
         <html lang="pt-br" suppressHydrationWarning>
         
-            <body suppressHydrationWarning className="antialiased">
+            <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
                 <GlobalContextProvider>
                     <AnimatedBackground />
                     <Header />
