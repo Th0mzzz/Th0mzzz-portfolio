@@ -1,14 +1,14 @@
 'use client';
 import SmallLogo from "@/assets/th0mzzz-logo-sm.png";
-import { useGlobalContext } from "@/context/global";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { HiOutlineMenuAlt4, HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
+import { useTheme } from "next-themes";
 
 export default function Header() {
-    const { handlers } = useGlobalContext();
+    const { theme, setTheme } = useTheme();
     const [openMenu, setOpenMenu] = useState(false);
     const navItemVariants = {
         rest: { color: "var(--text)" },
@@ -20,6 +20,10 @@ export default function Header() {
         hover: { scaleX: 1, opacity: 1 },
     };
     const navItemTransition = { duration: 0.25, ease: "easeOut" } as const;
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
 
     return (
         <>
@@ -82,9 +86,7 @@ export default function Header() {
                                 <motion.button
                                     type="button"
                                     aria-label="Alternar tema"
-                                    onClick={() => {
-                                        handlers.toggleTheme();
-                                    }}
+                                    onClick={toggleTheme}
                                     className="link text-[var(--text)] hover:!text-[var(--primary)]   rounded-full p-2 cursor-pointer"
                                     whileHover={{ rotate: 90 }}
                                     whileTap={{ scale: 0.5 }}
@@ -126,9 +128,7 @@ export default function Header() {
                                 <motion.button
                                     type="button"
                                     aria-label="Alternar tema"
-                                    onClick={() => {
-                                        handlers.toggleTheme();
-                                    }}
+                                    onClick={toggleTheme}
                                     className="link text-[var(--text)] hover:!text-[var(--primary)] rounded-full p-2 cursor-pointer"
                                     whileHover={{ rotate: 90 }}
                                     whileTap={{ scale: 0.9 }}
