@@ -56,7 +56,7 @@ const DotParticle = memo(function DotParticle({ dot, mouseX, mouseY }: { dot: Do
 
     return (
         <motion.div
-            className="absolute pointer-events-none will-change-transform"
+            className="absolute pointer-events-none will-change-transform "
             style={{
                 width: dot.size,
                 height: dot.size,
@@ -120,7 +120,8 @@ export default function AnimatedBackground() {
         };
     }, []);
     return (
-        <div className="fixed inset-0 overflow-hidden" onMouseMove={handlers.onMouseMove} onMouseLeave={handlers.onMouseLeave}>
+        // ensure this background is visually behind everything and non-interactive
+        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50" style={{ zIndex: -1 }} onMouseMove={handlers.onMouseMove} onMouseLeave={handlers.onMouseLeave}>
             {dots.map((dot) => (
                 <DotParticle key={dot.id} dot={dot} mouseX={mouseXPct} mouseY={mouseYPct} />
             ))}
