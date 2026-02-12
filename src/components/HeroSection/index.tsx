@@ -39,9 +39,9 @@ export default function HeroSection() {
                 <span className="w-[12vw] max-w-[150px]"></span>
                 <motion.div
                     className="
-                        w-[13vw] max-w-[180px] object-cover 
+                        w-[16vw] max-w-[180px] object-cover
                         absolute top-1/2 transform  
-                        left-1/3 -translate-x-1/3
+                        left-1/4
                         lg:left-1/4 lg:-translate-x-1/8
                         -translate-y-1/2"
 
