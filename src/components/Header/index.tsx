@@ -40,7 +40,19 @@ export default function Header() {
 
     useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
-                if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node) && mobileMenuButtonRef.current && !mobileMenuButtonRef.current.contains(event.target as Node)) {
+                if (!openMenu) return;
+
+                const target = event.target as HTMLElement;
+                const clickedInsideMenu = mobileMenuRef.current?.contains(target);
+                const clickedMenuButton = mobileMenuButtonRef.current?.contains(target);
+
+                console.log("Clicou em:", target);
+                console.log("Menu ref:", mobileMenuRef.current);
+                console.log("Dentro do menu?", clickedInsideMenu);
+                console.log("Dentro do botão?", clickedMenuButton);
+
+                if (!clickedInsideMenu && !clickedMenuButton) {
+                    console.log("Fechando menu");
                     setOpenMenu(false);
                 }
             }
@@ -49,12 +61,12 @@ export default function Header() {
                 document.removeEventListener("mousedown", handleClickOutside);
             }
         }
-        , []);
+        , [openMenu]);
 
     return (
         <>
             <header className="w-full 
-            lg:bg-gradient-to-b lg:from-[#ff313116] lg:to-transparent z-50
+            lg:bg-gradient-to-b lg:from-[#ff313116] lg:to-transparent z-20 relative
             ">
                 <nav className="
                 relative 
@@ -160,6 +172,12 @@ export default function Header() {
                     {/* Mobile Menu */}
                     <motion.div
                         ref={mobileMenuRef}
+                        onMouseDown={(e) => {
+                            e.stopPropagation();
+                        }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                        }}
                         className="lg:hidden fixed top-25 left-0 w-full bg-radial from-[var(--border)]/40 to-[var(--border)]/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg z-50 border border-[var(--border)]"
                         initial={{opacity: 0, y: -20, display: "none"}}
                         animate={openMenu && window.innerWidth < 1024 ? {
@@ -177,11 +195,11 @@ export default function Header() {
                                 {href: "#projects", label: "My Journey"},
                                 {href: "#contact", label: "Get in Touch"},
                             ].map((item) => (
-                                <li key={item.href + item.label}>
+                                <li key={item.href + item.label} >
                                     <Link
                                         href={item.href}
                                         className="subtitle font-bold text-[var(--background)] hover:text-[var(--primary)] transition-colors"
-                                        onClick={() => setOpenMenu(false)}
+                                        onClick={() => setOpenMenu(false) }
                                     >
                                         {item.label}
                                     </Link>
@@ -205,6 +223,7 @@ export default function Header() {
                                 </motion.button>
                                 <motion.a
                                     href={"https://www.linkedin.com/in/thomazvmendes/"}
+                                    target="_blank"
                                     className="link text-[var(--background)] hover:!text-[var(--primary)] rounded-full p-2 cursor-pointer"
                                     whileHover={{rotate: 90}}
                                     whileTap={{scale: 0.9}}
@@ -214,6 +233,7 @@ export default function Header() {
                                 </motion.a>
                                 <motion.a
                                     href={"https://github.com/Th0mzzz"}
+                                    target="_blank"
                                     className="link text-[var(--background)] hover:!text-[var(--primary)] rounded-full p-2 cursor-pointer"
                                     whileHover={{rotate: 90}}
                                     whileTap={{scale: 0.9}}

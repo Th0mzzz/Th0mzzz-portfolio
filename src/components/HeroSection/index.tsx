@@ -9,7 +9,7 @@ export default function HeroSection() {
 
     return (
         <div id="home"
-             className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50 mb-6 md:mb-8 lg:mb-10 px-4 relative">
+             className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50 mb-6 md:mb-8 lg:mb-10 px-4 relative z-10">
             <motion.h1
                 initial={{y: -40, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
@@ -92,7 +92,6 @@ export default function HeroSection() {
                 className="flex flex-col items-center justify-center gap-5 mt-50 cursor-pointer relative"
                 onClick={() => {
                     const aboutSection = document.getElementById("about");
-                    console.log("Scrolling to about section");
                     if (aboutSection) {
                         aboutSection.scrollIntoView({behavior: "smooth"});
                     }
