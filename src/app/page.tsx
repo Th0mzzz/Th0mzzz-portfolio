@@ -5,7 +5,6 @@ export default function Home() {
     return (
         <>
             <DecorativeCircles position="top-right"/>
-
             <HeroSection/>
         </>
     );

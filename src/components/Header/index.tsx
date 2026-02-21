@@ -71,7 +71,7 @@ export default function Header() {
                 <nav className="
                 relative 
                  max-w-[var(--alignment)] 
-                 bg-[var(--border)]/60 backdrop-blur lg:bg-transparent rounded-full
+                 bg-[var(--border)]/60 backdrop-blur lg:bg-transparent rounded-full lg:backdrop-blur-none
                  w-full 
                  flex items-center justify-between 
                  mx-auto mt-3 lg:mt-0 p-4 px-8

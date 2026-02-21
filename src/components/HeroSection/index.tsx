@@ -10,7 +10,7 @@ export default function HeroSection() {
 
     return (
         <div id="home"
-             className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50 mb-6 md:mb-8 lg:mb-10 px-4 relative z-10">
+             className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50 mb-20 md:mb-30 lg:mb-40 px-4 relative z-10">
             <motion.h1
                 initial={{y: -40, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
