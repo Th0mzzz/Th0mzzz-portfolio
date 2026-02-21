@@ -5,6 +5,7 @@ import AnimatedBackground from "@/components/animateBackground";
 import Header from "@/components/Header";
 import GlobalContextProvider from "@/context/global";
 import { gliker } from "@/lib/fonts";
+import SmoothScrollInit from "@/components/SmoothScrollInit";
 
 export const metadata: Metadata = {
     title: "Th0mzzz",
@@ -28,6 +29,7 @@ export default function RootLayout({
             
             <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
                 <GlobalContextProvider>
+                    <SmoothScrollInit />
                     <AnimatedBackground />
                     <Header />
                     {children}
