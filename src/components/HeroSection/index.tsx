@@ -4,6 +4,7 @@ import {motion} from "motion/react";
 import Image from "next/image";
 import {HiArrowDown} from "react-icons/hi";
 
+
 export default function HeroSection() {
 
 

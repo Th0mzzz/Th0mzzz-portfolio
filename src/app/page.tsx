@@ -1,9 +1,12 @@
 import HeroSection from "@/components/HeroSection";
+import DecorativeCircles from "@/components/DecorativeCircles";
 
 export default function Home() {
     return (
         <>
-            <HeroSection />
+            <DecorativeCircles position="top-right"/>
+
+            <HeroSection/>
         </>
     );
 }

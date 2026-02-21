@@ -75,7 +75,7 @@ const DotParticle = memo(function DotParticle({ dot, mouseX, mouseY }: { dot: Do
             }}
         >
             <motion.div
-                className="h-full w-full rounded-full bg-[var(--primary)] opacity-50"
+                className="h-full w-full rounded-full bg-[var(--primary)] opacity-30"
                 style={{ x: xSpring, y: ySpring, willChange: 'transform' }}
             />
         </motion.div>
@@ -90,24 +90,50 @@ export default function AnimatedBackground() {
     const mouseXPct = useMotionValue(-1000);
     const mouseYPct = useMotionValue(-1000);
 
-    const handlers = useMemo(() => {
-        const throttle = 16; // ~60fps
-        return {
-            onMouseMove: (e: React.MouseEvent<HTMLDivElement>) => {
-                const now = performance.now();
-                if (now - lastTimeRef.current < throttle) return;
-                lastTimeRef.current = now;
-                
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                mouseXPct.set(x);
-                mouseYPct.set(y);
-            },
-            onMouseLeave: () => {
+
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    useEffect(() => {
+        const throttle = 16;
+
+        const handleMove = (e: MouseEvent | TouchEvent) => {
+            const now = performance.now();
+            if (now - lastTimeRef.current < throttle) return;
+            lastTimeRef.current = now;
+
+            const rect = containerRef.current?.getBoundingClientRect();
+            if (!rect || rect.width === 0 || rect.height === 0) return;
+
+            let clientX: number, clientY: number;
+            if (e instanceof TouchEvent) {
+                if (!e.touches || e.touches.length === 0) return;
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = (e as MouseEvent).clientX;
+                clientY = (e as MouseEvent).clientY;
+            }
+
+            const x = ((clientX - rect.left) / rect.width) * 100;
+            const y = ((clientY - rect.top) / rect.height) * 100;
+            mouseXPct.set(x);
+            mouseYPct.set(y);
+        };
+
+        const handleLeave = (e: MouseEvent) => {
+            if ((e as MouseEvent).relatedTarget === null) {
                 mouseXPct.set(-1000);
                 mouseYPct.set(-1000);
-            },
+            }
+        };
+
+        window.addEventListener('mousemove', handleMove as EventListener);
+        window.addEventListener('touchmove', handleMove as EventListener, { passive: true });
+        window.addEventListener('mouseout', handleLeave);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMove as EventListener);
+            window.removeEventListener('touchmove', handleMove as EventListener);
+            window.removeEventListener('mouseout', handleLeave);
         };
     }, [mouseXPct, mouseYPct]);
 
@@ -120,8 +146,7 @@ export default function AnimatedBackground() {
         };
     }, []);
     return (
-        // ensure this background is visually behind everything and non-interactive
-        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-50" style={{ zIndex: -1 }} onMouseMove={handlers.onMouseMove} onMouseLeave={handlers.onMouseLeave}>
+        <div ref={containerRef} className="fixed inset-0 overflow-hidden pointer-events-none z-100 block">
             {dots.map((dot) => (
                 <DotParticle key={dot.id} dot={dot} mouseX={mouseXPct} mouseY={mouseYPct} />
             ))}
