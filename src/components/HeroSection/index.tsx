@@ -9,7 +9,7 @@ export default function HeroSection() {
 
 
     return (
-        <div id="home"
+        <div id="about"
              className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50 mb-20 md:mb-30 lg:mb-40 px-4 relative z-10">
             <motion.h1
                 initial={{y: -40, opacity: 0}}

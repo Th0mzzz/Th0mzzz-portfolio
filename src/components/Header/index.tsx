@@ -98,9 +98,9 @@ export default function Header() {
                         className="hidden lg:flex lg:relative lg:bg-transparent lg:backdrop-blur-none lg:p-0 lg:shadow-none lg:rounded-none lg:w-fit lg:border-0">
                         <ul className="flex items-center gap-8">
                             {[
-                                {href: "#home", label: "About me"},
-                                {href: "#about", label: "Projects"},
-                                {href: "#projects", label: "My Journey"},
+                                {href: "#about", label: "About me"},
+                                {href: "#projects", label: "Projects"},
+                                {href: "#journey", label: "My Journey"},
                                 {href: "#contact", label: "Get in Touch"},
                             ].map((item) => (
                                 <li key={item.href + item.label}>

@@ -62,7 +62,7 @@ body {
 
 .title {
     font-size: clamp(20px, calc(20px + 0.6vw), 30px);
-
+    font-weight: 700;
     font-family: var(--ff-title);
 }
 
@@ -76,7 +76,14 @@ body {
     font-family: var(--font-gliker);
     line-height: 1.5;
 }
-
+.section{
+    max-width: var(--alignment);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
 @media (max-width: 768px) {
     :root {
         --alignment: 90%;

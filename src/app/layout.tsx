@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import GlobalContextProvider from "@/context/global";
 import { gliker } from "@/lib/fonts";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
     title: "Th0mzzz",
@@ -25,13 +26,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="pt-br" suppressHydrationWarning>
+        <html lang="pt-br" suppressHydrationWarning id="home">
             
             <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
                 <GlobalContextProvider>
                     <SmoothScrollInit />
                     <AnimatedBackground />
                     <Header />
+                    <ScrollToTop />
                     {children}
                 </GlobalContextProvider>
             </body>
