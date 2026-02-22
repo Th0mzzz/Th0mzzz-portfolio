@@ -7,6 +7,7 @@
     --alignment: 1240px;
     --border: rgba(25, 26, 41, 0.6);
     --primary: #ff3131;
+    --primary-hover: #b72b2b;
     --text: #191a29;
     --ff-text: "Raleway", Helvetica, sans-serif;
     --ff-link: "Montserrat", Verdana, sans-serif;
@@ -68,8 +69,9 @@ body {
 
 .supertitle {
     font-size: clamp(26px, calc(26px + 0.9vw), 40px);
-
     font-family: var(--ff-title);
+    font-weight: bold;
+    letter-spacing: 0.3px;
 }
 
 .font-gliker {

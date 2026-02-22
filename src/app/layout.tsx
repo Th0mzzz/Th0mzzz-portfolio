@@ -27,8 +27,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pt-br" suppressHydrationWarning id="home">
-            
-            <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
+
+            <body suppressHydrationWarning className={`antialiased ${gliker.variable}`} style={{ overflowY: "auto" , overflowX: "hidden" }}>
                 <GlobalContextProvider>
                     <SmoothScrollInit />
                     <AnimatedBackground />

@@ -9,8 +9,8 @@ export default function HeroSection() {
 
 
     return (
-        <div id="about"
-             className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50 mb-20 md:mb-30 lg:mb-40 px-4 relative z-10">
+        <div
+             className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50  lg:mb-40 px-4 relative z-10 ">
             <motion.h1
                 initial={{y: -40, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
@@ -89,19 +89,13 @@ export default function HeroSection() {
                 <span className="text-[var(--primary)] text-xl sm:text-2xl md:text-3xl">{" }"}</span>
             </h2>
 
-            <button
-                className="flex flex-col items-center justify-center gap-5 mt-50 cursor-pointer relative"
-                onClick={() => {
-                    const aboutSection = document.getElementById("about");
-                    if (aboutSection) {
-                        aboutSection.scrollIntoView({behavior: "smooth"});
-                    }
-                }
-                }
+            <a
+                href={"#about"}
+                className="flex flex-col items-center justify-center gap-5 mt-50 cursor-pointer relative mb-[400px]"
             >
                 <span className="link md:text-base">Scroll Down</span>
                 <span className="animate-bounce text-3xl"><HiArrowDown size={35}/></span>
-            </button>
+            </a>
 
         </div>
     )

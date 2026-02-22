@@ -99,6 +99,7 @@ export default function Header() {
                         <ul className="flex items-center gap-8">
                             {[
                                 {href: "#about", label: "About me"},
+                                {href: "#skills", label: "Skills"},
                                 {href: "#projects", label: "Projects"},
                                 {href: "#journey", label: "My Journey"},
                                 {href: "#contact", label: "Get in Touch"},
@@ -190,9 +191,10 @@ export default function Header() {
                     >
                         <ul className="flex flex-col items-start gap-6">
                             {[
-                                {href: "#home", label: "About me"},
-                                {href: "#about", label: "Projects"},
-                                {href: "#projects", label: "My Journey"},
+                                {href: "#about", label: "About me"},
+                                {href: "#skills", label: "Skills"},
+                                {href: "#projects", label: "Projects"},
+                                {href: "#journey", label: "My Journey"},
                                 {href: "#contact", label: "Get in Touch"},
                             ].map((item) => (
                                 <li key={item.href + item.label} >
