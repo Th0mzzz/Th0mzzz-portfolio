@@ -30,7 +30,7 @@ export function smoothScrollTo(targetPosition: number, duration: number = 1000) 
  * Hook para adicionar smooth scroll aos links âncora
  */
 export function initSmoothScroll(duration: number = 1200) {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') return () => {};
 
   const handleClick = (e: Event) => {
     const target = e.target as HTMLElement;
@@ -42,7 +42,10 @@ export function initSmoothScroll(duration: number = 1200) {
     if (!href || href === '#') return;
 
     const targetElement = document.querySelector(href);
-    if (!targetElement) return;
+    if (!targetElement) {
+      console.warn(`Elemento não encontrado para: ${href}`);
+      return;
+    }
 
     e.preventDefault();
 

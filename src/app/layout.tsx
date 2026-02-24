@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 import "./globals.css";
 import React from "react";
 import AnimatedBackground from "@/components/animateBackground";
 import Header from "@/components/Header";
 import GlobalContextProvider from "@/context/global";
-import { gliker } from "@/lib/fonts";
+import {gliker} from "@/lib/fonts";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
 import ScrollToTop from "@/components/ScrollToTop";
+import DecorativeCircles from "@/components/DecorativeCircles";
 
 export const metadata: Metadata = {
     title: "Th0mzzz",
@@ -16,27 +17,29 @@ export const metadata: Metadata = {
         shortcut: '/th0mzzz-logo-sm.png',
         apple: '/th0mzzz-logo-sm.png',
     },
-    
+
 };
 
 
 export default function RootLayout({
-    children,
-}: Readonly<{
+                                       children,
+                                   }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
         <html lang="pt-br" suppressHydrationWarning id="home">
 
-            <body suppressHydrationWarning className={`antialiased ${gliker.variable}`} style={{ overflowY: "auto" , overflowX: "hidden" }}>
-                <GlobalContextProvider>
-                    <SmoothScrollInit />
-                    <AnimatedBackground />
-                    <Header />
-                    <ScrollToTop />
-                    {children}
-                </GlobalContextProvider>
-            </body>
+        <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
+        <GlobalContextProvider>
+            <SmoothScrollInit/>
+            <AnimatedBackground/>
+            <Header/>
+            <ScrollToTop/>
+            <DecorativeCircles position="top-right"/>
+            {children}
+
+        </GlobalContextProvider>
+        </body>
         </html>
     );
 }

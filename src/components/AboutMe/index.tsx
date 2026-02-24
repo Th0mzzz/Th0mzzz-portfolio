@@ -6,26 +6,27 @@ import Image from "next/image";
 import foto from "@/assets/img/foto.png";
 import {motion} from 'framer-motion';
 import DecorativeCircles from "@/components/DecorativeCircles";
+import BubbleHover from "@/components/BubbleHover";
 
 export default function AboutMe() {
     return (
         <>
             <section
                 id={"about"}
-                className={"section relative"}
+                className={"relative overflow-hidden py-20 px-4"}
             >
-                <Title text={"About Me"}/>
-                <div className="flex flex-col md:flex-row items-end gap-10 justify-between">
+                <div className="section flex flex-col lg:flex-row items-end gap-10 justify-between">
 
                     <motion.div
                         initial={{transform: "translateY(40%)", opacity: 0}}
                         whileInView={{transform: "translateY(0%)", opacity: 1}}
                         viewport={{once: true, amount: 0.3}}
                         transition={{duration: 0.7, ease: 'easeOut'}}
-                        className="flex flex-col gap-4 py-4">
+                        className="flex flex-col gap-4 py-4 max-w-[700px]">
+                        <Title text={"About Me"}/>
 
                         <h3 className={"supertitle"}>Hi, I&apos;m Thomaz!</h3>
-                        <p className="text my-4 max-w-[600px]">
+                        <p className="text my-4 ">
                             I develop solutions that span
                             both <strong>frontend</strong> and <strong>backend</strong> using
                             mainly <strong>JavaScript</strong>, with a
@@ -56,24 +57,42 @@ export default function AboutMe() {
                                 Download CV
                             </Button>
                         </div>
+                        <div className="flex gap-2 flex-col xl:flex-row mt-20">
+                            <BubbleHover width={"100%"}>
+                                <h4 className="link">Pro-activity</h4>
+                                <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding
+                                    new
+                                    solutions to problems and organizing workflows.</p>
+                            </BubbleHover>
+                            <BubbleHover width={"100%"}>
+                                <h4 className="link">Team Work</h4>
+                                <p className="text mt-2">I’m good making new connections and keeping the workspace more
+                                    positive and efficient.</p>
+                            </BubbleHover>
+                            <BubbleHover width={"100%"}>
+                                <h4 className="link">Leadership</h4>
+                                <p className="text mt-2">I always look forward to help my co-workers and organize projects and
+                                    ideas.</p>
+                            </BubbleHover>
+                        </div>
                     </motion.div>
                     <motion.div
-                        style={{width: "clamp(320px, 100%, 450px)"}}
+                        style={{maxWidth: "500px", minWidth: "300px", width: "100%"}}
                         initial={{transform: "translateY(40%)", opacity: 0}}
                         whileInView={{transform: "translateY(0%)", opacity: 1}}
                         viewport={{once: true, amount: 0.3}}
                         transition={{duration: 0.7, ease: 'easeOut'}}
                     >
                         <Image src={foto}
-                               alt={"Homem jovem branco com cabelos cacheados e barba curta castanhos claros, com camisa verde xadrez com camiseta branca por baixo e pingente de sol dourado "}
+                               alt={"Homem jovem branco com cabelos cacheados e barba curta castanhos claros, usando uma camisa azul clara, sorrindo e olhando para a câmera."}
                                style={{
                                    width: "100%",
-                                   filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2))"
+                                   filter: "drop-shadow(2px 2px 0 10px var(--text)) "
                                }}
                         />
                     </motion.div>
-                    <DecorativeCircles position={"bottom-right"}/>
                 </div>
+                <DecorativeCircles position={"bottom-right"}/>
             </section>
 
         </>
