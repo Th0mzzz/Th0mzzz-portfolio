@@ -50,7 +50,7 @@ export function initSmoothScroll(duration: number = 1200) {
     e.preventDefault();
 
     // Offset de 80px para não deixar a seção colada no topo
-    const offset = 80;
+    const offset = 30;
     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
     smoothScrollTo(targetPosition, duration);
 
