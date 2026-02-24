@@ -59,13 +59,13 @@ function BubbleHover({children, width = "fit-content"}: BubbleHoverProps) {
     }, [isHovered]);
 
     const variants = {
-        initial: {backgroundColor: "rgba(255, 49, 49, 0)", borderColor: "var(--border)", color: "var(--text)",},
-        hovered: {backgroundColor: "var(--primary)", borderColor: "var(--primary)", color: "#fff"},
+        initial: {backgroundColor: "rgba(255, 49, 49, 0)", borderColor: "var(--border)", color: "var(--text)", fill: "var(--text)"},
+        hovered: {backgroundColor: "var(--primary)", borderColor: "var(--primary)", color: "#fff", fill:"#fff"},
     };
 
     return (
         <motion.div
-            className="relative px-6 py-3 rounded-lg cursor-pointer overflow-visible"
+            className="relative px-6 py-3 rounded-lg cursor-pointer overflow-visible [&_svg]:fill-current [&_svg]:text-current [&_svg_*]:fill-current"
             style={{width}}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}

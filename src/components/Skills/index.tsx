@@ -1,90 +1,54 @@
 'use client'
-import Image from "next/image";
 import { useState } from "react";
+import { IconType } from "react-icons";
+import {
+    SiBootstrap,
+    SiExpress,
+    SiFastify,
+    SiFigma,
+    SiGit,
+    SiMongodb,
+    SiMysql,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiPhp,
+    SiPrisma,
+    SiReact,
+    SiSass,
+    SiTailwindcss,
+    SiTypescript,
+} from "react-icons/si";
 import BubbleHover from "../BubbleHover";
 import TabSection from "../Tab";
 import Title from "../Title";
 
+type SkillType = "frontend" | "backend" | "database" | "other";
+
+interface Skill {
+    name: string;
+    icon: IconType;
+    type: SkillType;
+}
+
+const skills: Skill[] = [
+    { name: "React", icon: SiReact, type: "frontend" },
+    { name: "Next.js", icon: SiNextdotjs, type: "frontend" },
+    { name: "TypeScript", icon: SiTypescript, type: "frontend" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, type: "frontend" },
+    { name: "Bootstrap", icon: SiBootstrap, type: "frontend" },
+    { name: "Sass", icon: SiSass, type: "frontend" },
+    { name: "Node.js", icon: SiNodedotjs, type: "backend" },
+    { name: "Express", icon: SiExpress, type: "backend" },
+    { name: "Fastify", icon: SiFastify, type: "backend" },
+    { name: "PHP", icon: SiPhp, type: "backend" },
+    { name: "MongoDB", icon: SiMongodb, type: "database" },
+    { name: "MySQL", icon: SiMysql, type: "database" },
+    { name: "Prisma", icon: SiPrisma, type: "database" },
+    { name: "Git", icon: SiGit, type: "other" },
+    { name: "Figma", icon: SiFigma, type: "other" },
+];
+
 export default function Skills() {
-    const skills = [
-        {
-            name: "React",
-            icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-            type: "frontend"
-        },
-        {
-            name: "Next.js",
-            icon: "./devicon-master/icons/nextjs.svg",
-            type: "frontend"
-        },
-        {
-            name: "TypeScript",
-            icon: "./devicon-master/icons/typescript.svg",
-            type: "backend"
-
-        },
-        {
-            name: "Tailwind CSS",
-            icon: "./devicon-master/icons/tailwind.svg",
-            type: "frontend"
-        },
-        {
-            name: "Bootstrap",
-            icon: "./devicon-master/icons/bootstrap.svg",
-            type: "frontend"
-        },
-        {
-            name: "Sass",
-            icon: "./devicon-master/icons/sass.svg",
-            type: "frontend"
-        },
-        {
-            name: "Node.js",
-            icon: "./devicon-master/icons/nodejs.svg",
-            type: "backend"
-        },
-        {
-            name: "Express",
-            icon: "./devicon-master/icons/expressjs.svg",
-            type: "backend"
-        },
-        {
-            name: "Fastify",
-            icon: "./devicon-master/icons/fastify.svg",
-            type: "backend"
-        },
-        {
-            name: "PHP",
-            icon: "./devicon-master/icons/php.svg",
-            type: "backend"
-        },
-        {
-            name: "MongoDB",
-            icon: "./devicon-master/icons/mongodb.svg",
-            type: "database"
-        },
-        {
-            name: "MySQL",
-            icon: "./devicon-master/icons/sql.svg",
-            type: "database"
-        },
-        {
-            name: "Prisma",
-            icon: "./devicon-master/icons/prisma.svg",
-            type: "database"
-        },
-        {
-            name: "Git",
-            icon: "./devicon-master/icons/git.svg",
-            type: "other"
-        },
-        {
-            name: "Figma",
-            icon: "./devicon-master/icons/figma.svg",
-            type: "other"
-        },
-
-    ]
     const [selectedTab, setSelectedTab] = useState("All")
 
     const skillsType = [...new Set(skills.map(skill => skill.type))]
@@ -117,12 +81,14 @@ export default function Skills() {
                             }
 
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+                        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
                             {
                                 filteredSkills.map((skill, index) => (
-                                    <BubbleHover key={index} width="100%">
-                                        <Image src={skill.icon} alt={skill.name} className="object-contain" width={16} height={16}/>
-                                        <span className="link">{skill.name}</span>
+                                    <BubbleHover key={index} width="180px">
+                                        <div className="flex flex-col items-center gap-2">
+                                            <skill.icon className="text-8xl fill-current" />
+                                            <span className="link">{skill.name}</span>
+                                        </div>
                                     </BubbleHover>
                                 ))
 

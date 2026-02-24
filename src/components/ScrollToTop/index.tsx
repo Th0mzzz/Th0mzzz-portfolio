@@ -32,7 +32,7 @@ export default function ScrollToTop() {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: 100, opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
-                    className="fixed bottom-8 right-8 z-50 w-14 h-14 flex items-center justify-center bg-[var(--primary)] rounded-lg shadow-lg hover:scale-110 transition-transform duration-200"
+                    className="fixed bottom-8 right-8 z-101 w-14 h-14 flex items-center justify-center bg-[var(--primary)] rounded-lg shadow-lg hover:scale-110 transition-transform duration-200"
                     aria-label="Voltar ao topo"
                 >
                     <HiArrowUp className="w-6 h-6 text-white" />

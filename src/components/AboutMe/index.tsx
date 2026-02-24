@@ -57,7 +57,7 @@ export default function AboutMe() {
                                 Download CV
                             </Button>
                         </div>
-                        <div className="flex gap-2 flex-col lg:flex-row mt-20">
+                        <div className="flex gap-2 flex-col lg:flex-row mt-10">
                             <BubbleHover width={"100%"}>
                                 <h4 className="link">Pro-activity</h4>
                                 <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding
