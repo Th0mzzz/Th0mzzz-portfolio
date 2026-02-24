@@ -46,7 +46,9 @@ export function initSmoothScroll(duration: number = 1200) {
 
     e.preventDefault();
 
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+    // Offset de 80px para não deixar a seção colada no topo
+    const offset = 80;
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
     smoothScrollTo(targetPosition, duration);
 
     // Atualiza URL sem scroll
