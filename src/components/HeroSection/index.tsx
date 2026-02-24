@@ -4,7 +4,6 @@ import {motion} from "motion/react";
 import Image from "next/image";
 import {HiArrowDown} from "react-icons/hi";
 
-
 export default function HeroSection() {
 
 
@@ -12,7 +11,6 @@ export default function HeroSection() {
         <div
              className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50  lg:mb-40 px-4 relative z-10 ">
             <motion.h1
-                initial={{y: -40, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
                 transition={{duration: 0.7, ease: 'easeOut'}}
                 className="font-gliker text-6xl md:text-8xl lg:text-[100px] text-center 

@@ -85,7 +85,7 @@ export default function DecorativeCircles({ position = 'top-right' }: Decorative
     const { containerClass, circles } = positionStyles[position];
 
     return (
-        <div className={`absolute ${containerClass} w-full h-screen pointer-events-none -z-10 `} style={{maxWidth:"100vw"}}>
+        <div className={`absolute ${containerClass} w-0 h-0 pointer-events-none -z-50 overflow-visible`}>
             {circles.map((circle, index) => (
                 <Circle key={index} {...circle} />
             ))}

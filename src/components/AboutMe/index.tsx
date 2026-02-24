@@ -13,10 +13,10 @@ export default function AboutMe() {
         <>
             <section
                 id={"about"}
-                className={"section relative"}
+                className={"relative overflow-hidden py-20 px-4"}
             >
                 <Title text={"About Me"}/>
-                <div className="flex flex-col md:flex-row items-end gap-10 justify-between">
+                <div className="section flex flex-col lg:flex-row items-end gap-10 justify-between">
 
                     <motion.div
                         initial={{transform: "translateY(40%)", opacity: 0}}
@@ -60,7 +60,8 @@ export default function AboutMe() {
                         <div className="flex gap-2 flex-col xl:flex-row mt-20">
                             <BubbleHover width={"100%"}>
                                 <h4 className="link">Pro-activity</h4>
-                                <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding new
+                                <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding
+                                    new
                                     solutions to problems and organizing workflows.</p>
                             </BubbleHover>
                             <BubbleHover width={"100%"}>
@@ -76,7 +77,7 @@ export default function AboutMe() {
                         </div>
                     </motion.div>
                     <motion.div
-                        style={{maxWidth: "500px", minWidth: "400px", width: "100%"}}
+                        style={{maxWidth: "500px", minWidth: "300px", width: "100%"}}
                         initial={{transform: "translateY(40%)", opacity: 0}}
                         whileInView={{transform: "translateY(0%)", opacity: 1}}
                         viewport={{once: true, amount: 0.3}}
@@ -90,8 +91,8 @@ export default function AboutMe() {
                                }}
                         />
                     </motion.div>
-                    <DecorativeCircles position={"bottom-right"}/>
                 </div>
+                <DecorativeCircles position={"bottom-right"}/>
             </section>
 
         </>
