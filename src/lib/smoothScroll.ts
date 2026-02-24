@@ -1,6 +1,3 @@
-/**
- * Smooth scroll customizado com controle de velocidade
- */
 
 export function smoothScrollTo(targetPosition: number, duration: number = 1000) {
   const startPosition = window.pageYOffset;
@@ -15,7 +12,6 @@ export function smoothScrollTo(targetPosition: number, duration: number = 1000) 
     if (timeElapsed < duration) requestAnimationFrame(animation);
   }
 
-  // Easing function para scroll mais suave (ease in out quad)
   function ease(t: number, b: number, c: number, d: number) {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -26,9 +22,7 @@ export function smoothScrollTo(targetPosition: number, duration: number = 1000) 
   requestAnimationFrame(animation);
 }
 
-/**
- * Hook para adicionar smooth scroll aos links âncora
- */
+
 export function initSmoothScroll(duration: number = 1200) {
   if (typeof window === 'undefined') return () => {};
 
@@ -49,12 +43,11 @@ export function initSmoothScroll(duration: number = 1200) {
 
     e.preventDefault();
 
-    // Offset de 80px para não deixar a seção colada no topo
-    const offset = 30;
+
+    const offset = 10;
     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
     smoothScrollTo(targetPosition, duration);
 
-    // Atualiza URL sem scroll
     if (history.pushState) {
       history.pushState(null, '', href);
     }
@@ -62,7 +55,6 @@ export function initSmoothScroll(duration: number = 1200) {
 
   document.addEventListener('click', handleClick);
 
-  // Cleanup function
   return () => {
     document.removeEventListener('click', handleClick);
   };

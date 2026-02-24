@@ -9,12 +9,12 @@ export default function HeroSection() {
 
     return (
         <div
-            className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30 lg:mt-50  lg:mb-20 px-4 relative z-10 ">
+            className="flex items-center justify-center flex-col gap-3 md:gap-4 mt-30  lg:mb-20 px-4 relative z-10 ">
             <motion.h1
                 initial={{ y: -40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="font-gliker text-6xl lg:text-[80px] text-center 
+                className="font-gliker text-6xl md:text-8xl lg:text-[90px] text-center 
             flex items-center relative -z-50 w-fit
              transition-all duration-300"
             >
@@ -90,7 +90,7 @@ export default function HeroSection() {
 
             <a
                 href={"#about"}
-                className="flex flex-col items-center justify-center gap-5 mt-50 cursor-pointer relative mb-[400px]"
+                className="flex flex-col items-center justify-center gap-5 mt-50 md:mt-20 cursor-pointer relative mb-[400px]"
             >
                 <span className="link md:text-base">Scroll Down</span>
                 <span className="animate-bounce text-3xl"><HiArrowDown size={35} /></span>

@@ -13,7 +13,7 @@ export default function AboutMe() {
         <>
             <section
                 id={"about"}
-                className={"relative overflow-hidden py-20 px-4"}
+                className={"relative overflow-hidden pt-30 px-4"}
             >
                 <div className="section flex flex-col lg:flex-row items-end gap-10 justify-between">
 
@@ -57,7 +57,7 @@ export default function AboutMe() {
                                 Download CV
                             </Button>
                         </div>
-                        <div className="flex gap-2 flex-col xl:flex-row mt-20">
+                        <div className="flex gap-2 flex-col lg:flex-row mt-20">
                             <BubbleHover width={"100%"}>
                                 <h4 className="link">Pro-activity</h4>
                                 <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding
