@@ -6,6 +6,7 @@ import Image from "next/image";
 import foto from "@/assets/img/foto.png";
 import {motion} from 'framer-motion';
 import DecorativeCircles from "@/components/DecorativeCircles";
+import BubbleHover from "@/components/BubbleHover";
 
 export default function AboutMe() {
     return (
@@ -22,10 +23,10 @@ export default function AboutMe() {
                         whileInView={{transform: "translateY(0%)", opacity: 1}}
                         viewport={{once: true, amount: 0.3}}
                         transition={{duration: 0.7, ease: 'easeOut'}}
-                        className="flex flex-col gap-4 py-4">
+                        className="flex flex-col gap-4 py-4 max-w-[700px]">
 
                         <h3 className={"supertitle"}>Hi, I&apos;m Thomaz!</h3>
-                        <p className="text my-4 max-w-[600px]">
+                        <p className="text my-4 ">
                             I develop solutions that span
                             both <strong>frontend</strong> and <strong>backend</strong> using
                             mainly <strong>JavaScript</strong>, with a
@@ -56,9 +57,26 @@ export default function AboutMe() {
                                 Download CV
                             </Button>
                         </div>
+                        <div className="flex gap-2 flex-col xl:flex-row mt-20">
+                            <BubbleHover width={"100%"}>
+                                <h4 className="link">Pro-activity</h4>
+                                <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding new
+                                    solutions to problems and organizing workflows.</p>
+                            </BubbleHover>
+                            <BubbleHover width={"100%"}>
+                                <h4 className="link">Team Work</h4>
+                                <p className="text mt-2">I’m good making new connections and keeping the workspace more
+                                    positive and efficient.</p>
+                            </BubbleHover>
+                            <BubbleHover width={"100%"}>
+                                <h4 className="link">Leadership</h4>
+                                <p className="text mt-2">I always try to help my co-workers and organize projects and
+                                    ideas.</p>
+                            </BubbleHover>
+                        </div>
                     </motion.div>
                     <motion.div
-                        style={{width: "clamp(320px, 100%, 450px)"}}
+                        style={{maxWidth: "500px", minWidth: "400px", width: "100%"}}
                         initial={{transform: "translateY(40%)", opacity: 0}}
                         whileInView={{transform: "translateY(0%)", opacity: 1}}
                         viewport={{once: true, amount: 0.3}}
