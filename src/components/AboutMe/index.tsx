@@ -15,7 +15,6 @@ export default function AboutMe() {
                 id={"about"}
                 className={"relative overflow-hidden py-20 px-4"}
             >
-                <Title text={"About Me"}/>
                 <div className="section flex flex-col lg:flex-row items-end gap-10 justify-between">
 
                     <motion.div
@@ -24,6 +23,7 @@ export default function AboutMe() {
                         viewport={{once: true, amount: 0.3}}
                         transition={{duration: 0.7, ease: 'easeOut'}}
                         className="flex flex-col gap-4 py-4 max-w-[700px]">
+                        <Title text={"About Me"}/>
 
                         <h3 className={"supertitle"}>Hi, I&apos;m Thomaz!</h3>
                         <p className="text my-4 ">
@@ -71,7 +71,7 @@ export default function AboutMe() {
                             </BubbleHover>
                             <BubbleHover width={"100%"}>
                                 <h4 className="link">Leadership</h4>
-                                <p className="text mt-2">I always try to help my co-workers and organize projects and
+                                <p className="text mt-2">I always look forward to help my co-workers and organize projects and
                                     ideas.</p>
                             </BubbleHover>
                         </div>
@@ -84,10 +84,10 @@ export default function AboutMe() {
                         transition={{duration: 0.7, ease: 'easeOut'}}
                     >
                         <Image src={foto}
-                               alt={"Homem jovem branco com cabelos cacheados e barba curta castanhos claros, com camisa verde xadrez com camiseta branca por baixo e pingente de sol dourado "}
+                               alt={"Homem jovem branco com cabelos cacheados e barba curta castanhos claros, usando uma camisa azul clara, sorrindo e olhando para a câmera."}
                                style={{
                                    width: "100%",
-                                   filter: "drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2))"
+                                   filter: "drop-shadow(2px 2px 0 10px var(--text)) "
                                }}
                         />
                     </motion.div>

@@ -59,7 +59,7 @@ function BubbleHover({children, width = "fit-content"}: BubbleHoverProps) {
     }, [isHovered]);
 
     const variants = {
-        initial: {backgroundColor: "rgba(255, 49, 49, 0)", borderColor: "var(--border)"},
+        initial: {backgroundColor: "rgba(255, 49, 49, 0)", borderColor: "var(--border)", color: "var(--text)",},
         hovered: {backgroundColor: "var(--primary)", borderColor: "var(--primary)", color: "#fff"},
     };
 
