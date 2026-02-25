@@ -28,8 +28,8 @@ function BubbleHover({children, width = "fit-content"}: BubbleHoverProps) {
             const newBubble: Bubble = {
                 id: `${Date.now()}-${Math.random()}`,
                 left: `${Math.random() * 100}%`,
-                size: Math.random() * 8 + 10,
-                duration: Math.random() + 1,
+                size: Math.random() * 12 + 20,
+                duration: Math.random() + 3,
             };
             setBubbles(prev => [...prev, newBubble]);
 
@@ -60,7 +60,7 @@ function BubbleHover({children, width = "fit-content"}: BubbleHoverProps) {
 
     const variants = {
         initial: {backgroundColor: "rgba(255, 49, 49, 0)", borderColor: "var(--border)", color: "var(--text)", fill: "var(--text)"},
-        hovered: {backgroundColor: "var(--primary)", borderColor: "var(--primary)", color: "#fff", fill:"#fff"},
+        hovered: {backgroundColor: "var(--primary)", borderColor: "var(--primary)", color: "var(--foreground)", fill:"var(--foreground)"},
     };
 
     return (

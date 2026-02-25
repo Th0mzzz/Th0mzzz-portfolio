@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { IconType } from "react-icons";
 import {
     SiBootstrap,
@@ -50,12 +50,24 @@ const skills: Skill[] = [
 
 export default function Skills() {
     const [selectedTab, setSelectedTab] = useState("All")
+    const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 })
+    const tabsRef = useRef<{ [key: string]: HTMLButtonElement | null }>({})
 
     const skillsType = [...new Set(skills.map(skill => skill.type))]
 
     const filteredSkills = selectedTab === "All" 
         ? skills 
         : skills.filter(skill => skill.type === selectedTab)
+
+    useEffect(() => {
+        const activeTab = tabsRef.current[selectedTab]
+        if (activeTab) {
+            setIndicatorStyle({
+                left: activeTab.offsetLeft,
+                width: activeTab.offsetWidth
+            })
+        }
+    }, [selectedTab])
 
 
         return (
@@ -66,13 +78,19 @@ export default function Skills() {
                 >
                     <div className="section">
                         <Title text={"Skills"} />
-                        <div className="flex flex-wrap items-center my-12">
-                            <TabSection text={"All"} active={selectedTab === 'All'} onClick={() => setSelectedTab("All")} />
+                        <div className="relative flex items-center my-12 overflow-x-auto">
+                            <TabSection
+                                ref={(el) => { tabsRef.current['All'] = el }}
+                                text={"All"}
+                                active={selectedTab === 'All'}
+                                onClick={() => setSelectedTab("All")}
+                            />
 
                             {
                                 skillsType.map((type, index) => (
                                     <TabSection
                                         key={index}
+                                        ref={(el) => { tabsRef.current[type] = el }}
                                         text={type.charAt(0).toUpperCase() + type.slice(1)}
                                         active={selectedTab === type}
                                         onClick={() => setSelectedTab(type)}
@@ -80,8 +98,16 @@ export default function Skills() {
                                 ))
                             }
 
+                            {/* Indicador animado */}
+                            <div
+                                className="absolute bottom-0 h-0.5 bg-[var(--primary)] transition-all duration-300 ease-out"
+                                style={{
+                                    left: `${indicatorStyle.left}px`,
+                                    width: `${indicatorStyle.width}px`
+                                }}
+                            />
                         </div>
-                        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8 justify-center md:justify-start">
                             {
                                 filteredSkills.map((skill, index) => (
                                     <BubbleHover key={index} width="180px">

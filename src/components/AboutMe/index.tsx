@@ -13,7 +13,7 @@ export default function AboutMe() {
         <>
             <section
                 id={"about"}
-                className={"relative overflow-hidden pt-30 px-4"}
+                className={"relative overflow-hidden pt-50 px-4"}
             >
                 <div className="section flex flex-col lg:flex-row items-end gap-10 justify-between">
 
