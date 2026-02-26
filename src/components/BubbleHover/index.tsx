@@ -4,7 +4,9 @@ import {motion, AnimatePresence} from "framer-motion";
 
 interface BubbleHoverProps {
     children: React.ReactNode,
-    width?: string
+    width?: string,
+    onHoverStart?: () => void,
+    onHoverEnd?: () => void
 }
 
 interface Bubble {
@@ -14,7 +16,7 @@ interface Bubble {
     duration: number;
 }
 
-function BubbleHover({children, width = "fit-content"}: BubbleHoverProps) {
+function BubbleHover({children, width = "fit-content", onHoverStart, onHoverEnd}: BubbleHoverProps) {
     const [isHovered, setIsHovered] = useState(false);
     const [bubbles, setBubbles] = useState<Bubble[]>([]);
 
@@ -59,16 +61,32 @@ function BubbleHover({children, width = "fit-content"}: BubbleHoverProps) {
     }, [isHovered]);
 
     const variants = {
-        initial: {backgroundColor: "rgba(255, 49, 49, 0)", borderColor: "var(--border)", color: "var(--text)", fill: "var(--text)"},
-        hovered: {backgroundColor: "var(--primary)", borderColor: "var(--primary)", color: "var(--foreground)", fill:"var(--foreground)"},
+        initial: {
+            backgroundColor: "rgba(255, 49, 49, 0)",
+            borderColor: "var(--border)",
+            color: "var(--text)",
+            fill: "var(--text)"
+        },
+        hovered: {
+            backgroundColor: "var(--primary)",
+            borderColor: "var(--primary)",
+            color: "var(--foreground)",
+            fill: "var(--foreground)"
+        },
     };
 
     return (
         <motion.div
             className="relative px-6 py-3 rounded-lg cursor-pointer overflow-visible [&_svg]:fill-current [&_svg]:text-current [&_svg_*]:fill-current"
             style={{width}}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
+            onHoverStart={() => {
+                if(onHoverStart) onHoverStart()
+                setIsHovered(true)
+            }}
+            onHoverEnd={() => {
+                if(onHoverEnd) onHoverEnd()
+                setIsHovered(false)
+            }}
             animate={isHovered ? "hovered" : "initial"}
             variants={variants}
             transition={{duration: 0.5, ease: "easeInOut"}}
