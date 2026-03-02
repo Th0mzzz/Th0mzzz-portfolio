@@ -27,17 +27,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="pt-br" suppressHydrationWarning id="home">
+        <html lang="pt-br" suppressHydrationWarning id="home" className="overflow-x-clip">
 
-        <body suppressHydrationWarning className={`antialiased ${gliker.variable}`}>
+        <body suppressHydrationWarning className={`antialiased ${gliker.variable} overflow-x-clip`}>
         <GlobalContextProvider>
-            <SmoothScrollInit/>
-            <AnimatedBackground/>
-            <Header/>
-            <ScrollToTop/>
-            <DecorativeCircles position="top-right"/>
-            {children}
-
+            <div className="relative w-full overflow-x-clip">
+                <SmoothScrollInit/>
+                <AnimatedBackground/>
+                <Header/>
+                <ScrollToTop/>
+                <DecorativeCircles position="top-right"/>
+                {children}
+            </div>
         </GlobalContextProvider>
         </body>
         </html>

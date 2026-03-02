@@ -77,7 +77,7 @@ function BubbleHover({children, width = "fit-content", onHoverStart, onHoverEnd}
 
     return (
         <motion.div
-            className="relative px-6 py-3 rounded-lg cursor-pointer overflow-visible [&_svg]:fill-current [&_svg]:text-current [&_svg_*]:fill-current"
+            className="relative px-6 py-3 rounded-lg cursor-pointer overflow-visible [&_svg]:fill-current [&_svg]:text-current [&_svg_*]:fill-current flex items-center justify-center text-center"
             style={{width}}
             onHoverStart={() => {
                 if(onHoverStart) onHoverStart()

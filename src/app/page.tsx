@@ -5,13 +5,11 @@ import Projects from "@/components/Projects";
 
 export default function Home() {
     return (
-        <>
+        <main className="w-full overflow-x-clip">
             <HeroSection/>
             <AboutMe/>
             <Skills/>
             <Projects/>
-        </>
-
-    )
-        ;
+        </main>
+    );
 }
