@@ -143,7 +143,7 @@ function Projects() {
                     <div
                         ref={carouselRef}
                         onScroll={checkScrollability}
-                        className="flex gap-4 sm:gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-1"
+                        className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden items-start pb-4 scrollbar-hide snap-x snap-mandatory px-1"
                     >
                         <AnimatePresence mode="wait">
                             {filteredProjects.map((project, index) => (
