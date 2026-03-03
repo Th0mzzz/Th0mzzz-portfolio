@@ -54,7 +54,7 @@ export const journeyItems: JourneyItem[] = [
             "Completed high school with a focus on sciences and mathematics. Participated in technology fairs and programming competitions, developing early interest in software development.",
     },
     {
-        id: "4",
+        id: "5",
         category: "education",
         title: "English Course",
         organization: "Wizard",

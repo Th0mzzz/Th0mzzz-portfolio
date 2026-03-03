@@ -41,6 +41,19 @@ export default function MyJourney() {
         selectedCategory === "all"
             ? journeyItems
             : journeyItems.filter((item) => item.category === selectedCategory);
+    
+    const parseMonthYear = (str: string) => {
+        if (!str) return 0;
+        const parts = str.split('/').map(s => parseInt(s, 10));
+        if (parts.length !== 2) return 0;
+        const [month, year] = parts;
+        if (isNaN(month) || isNaN(year)) return 0;
+        return year * 100 + month;
+    };
+
+    const sortedItems = filteredItems.slice().sort((a, b) => {
+        return parseMonthYear(b.startDate) - parseMonthYear(a.startDate);
+    });
 
     useEffect(() => {
         const activeTab = tabsRef.current[selectedCategory];
@@ -55,8 +68,7 @@ export default function MyJourney() {
     return (
         <section id="journey" className="relative py-20 px-4">
             <div className="section">
-                {/* Title */}
-                <motion.div
+                         <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -65,8 +77,7 @@ export default function MyJourney() {
                     <Title text="My Journey" />
                 </motion.div>
 
-                {/* Description */}
-                <motion.p
+                  <motion.p
                     className="text text-gray-500 max-w-2xl mb-10"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +88,7 @@ export default function MyJourney() {
                     the milestones that have shaped my career in software development.
                 </motion.p>
 
-                {/* Tabs */}
+
                 <motion.div
                     className="relative flex items-center mb-12 overflow-x-auto"
                     initial={{ opacity: 0, y: 20 }}
@@ -97,7 +108,7 @@ export default function MyJourney() {
                         />
                     ))}
 
-                    {/* Sliding indicator */}
+
                     <div
                         className="absolute bottom-0 h-0.5 bg-[var(--primary)] transition-all duration-300 ease-out"
                         style={{
@@ -107,7 +118,7 @@ export default function MyJourney() {
                     />
                 </motion.div>
 
-                {/* Timeline */}
+
                 <div className="relative max-w-3xl mx-auto">
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -117,7 +128,7 @@ export default function MyJourney() {
                             animate="visible"
                             exit="exit"
                         >
-                            {filteredItems.map((item, index) => (
+                            {sortedItems.map((item, index) => (
                                 <motion.div key={item.id} variants={itemVariants}>
                                     <TimelineCard item={item} index={index} />
                                 </motion.div>
@@ -129,4 +140,3 @@ export default function MyJourney() {
         </section>
     );
 }
-
