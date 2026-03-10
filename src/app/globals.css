@@ -13,6 +13,7 @@
     --ff-link: "Montserrat", Verdana, sans-serif;
     --ff-title: "Montserrat", Helvetica, sans-serif;
     --ff-subtitle: "Raleway", Helvetica, sans-serif;
+    --font-gliker: "Gliker", var(--ff-title);
 }
 
 html {
@@ -55,37 +56,37 @@ html[data-theme="dark"] .theme-icon--dark {
 .text {
     font-size: clamp(12px, calc(12px + 0.25vw), 14px);
 
-    font-family: var(--ff-text);
+    font-family: var(--ff-text), sans-serif;
 }
 
 .link {
     font-size: clamp(13px, calc(13px + 0.3vw), 15px);
 
-    font-family: var(--ff-link);
+    font-family: var(--ff-link), sans-serif;
     font-weight: 600;
 }
 
 .subtitle {
     font-size: clamp(18px, calc(18px + 0.45vw), 22px);
 
-    font-family: var(--ff-subtitle);
+    font-family: var(--ff-subtitle), sans-serif;
 }
 
 .title {
     font-size: clamp(20px, calc(20px + 0.6vw), 30px);
     font-weight: 700;
-    font-family: var(--ff-title);
+    font-family: var(--ff-title), sans-serif;
 }
 
 .supertitle {
     font-size: clamp(26px, calc(26px + 0.9vw), 40px);
-    font-family: var(--ff-title);
+    font-family: var(--ff-title), sans-serif;
     font-weight: bold;
     letter-spacing: 0.3px;
 }
 
 .font-gliker {
-    font-family: var(--font-gliker);
+    font-family: var(--font-gliker), sans-serif;
     line-height: 1.5;
 }
 .section{
@@ -140,4 +141,41 @@ html[data-theme="dark"] .theme-icon--dark {
     --text: #f8f8f8;
 }
 
+/* Custom global scrollbar: red gradient (var(--primary) -> var(--primary-hover)) with rounded corners */
+/* WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+  border-radius: 999px;
+  border: 3px solid transparent; /* keep some inner spacing and preserve rounded look */
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(0.95);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox fallback: gradient not supported in color, use primary color and thin width */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent; /* thumb, track */
+}
+
+/* Optional: smooth touch scrolling on mobile for containers that scroll */
+/* Apply to modal inner scrolling and other overflow-auto containers */
+.overflw-smooth-mobile, .modal-scroll, .overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}

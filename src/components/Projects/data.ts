@@ -17,7 +17,7 @@ export const projects: Project[] = [
         id: "1",
         year: 2025,
         title: "E-commerce Platform",
-        description: "Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.",
+        description: "Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.Uma plataforma completa de e-commerce com sistema de pagamentos, carrinho de compras, autenticação de usuários e painel administrativo. Desenvolvido com foco em performance e experiência do usuário.",
         quote: "Transformando a experiência de compra online com tecnologia moderna",
         techStack: [
             { name: "Next.js", icon: SiNextdotjs },
@@ -29,7 +29,7 @@ export const projects: Project[] = [
         githubUrl: "https://github.com/th0mzzz/ecommerce",
         liveUrl: "https://ecommerce-demo.vercel.app",
         category: "fullstack",
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop",
+        image: "",
         featured: true,
     },
     {
