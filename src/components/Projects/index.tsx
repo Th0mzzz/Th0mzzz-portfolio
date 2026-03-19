@@ -145,7 +145,7 @@ function Projects() {
                         onScroll={checkScrollability}
                         className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden items-start pb-4 scrollbar-hide snap-x snap-mandatory px-1"
                     >
-                        <AnimatePresence mode="wait">
+                        <AnimatePresence>
                             {filteredProjects.map((project, index) => (
                                 <motion.div
                                     key={project.id}
@@ -176,7 +176,7 @@ function Projects() {
                 </div>
 
                 <div className="hidden lg:grid lg:grid-cols-3 gap-6">
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence>
                         {filteredProjects.map((project, index) => (
                             <ProjectCard
                                 key={project.id}

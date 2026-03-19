@@ -21,7 +21,7 @@ import {
 import BubbleHover from "../BubbleHover";
 import TabSection from "../Tab";
 import Title from "../Title";
-import {motion, useInView, AnimatePresence} from "framer-motion";
+import {motion, AnimatePresence} from "framer-motion";
 
 type SkillType = "frontend" | "backend" | "database" | "other";
 
@@ -48,18 +48,6 @@ const skills: Skill[] = [
     {name: "Git", icon: SiGit, type: "other"},
     {name: "Figma", icon: SiFigma, type: "other"},
 ];
-
-// Variantes de animação
-const containerVariants = {
-    hidden: {opacity: 0},
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.3
-        }
-    }
-};
 
 const titleVariants = {
     hidden: {opacity: 0, y: -30},
@@ -102,23 +90,13 @@ export default function Skills() {
     const [selectedTab, setSelectedTab] = useState("All")
     const [iconHovered, setIconHovered] = useState<string | null>(null)
     const [indicatorStyle, setIndicatorStyle] = useState({left: 0, width: 0})
-    const [hasAnimated, setHasAnimated] = useState(false)
     const tabsRef = useRef<{ [key: string]: HTMLButtonElement | null }>({})
-    const sectionRef = useRef<HTMLElement>(null)
-    const isInView = useInView(sectionRef, {once: true, margin: "-100px"})
 
     const skillsType = [...new Set(skills.map(skill => skill.type))]
 
     const filteredSkills = selectedTab === "All"
         ? skills
         : skills.filter(skill => skill.type === selectedTab)
-
-    // Marcar como animado após a primeira vez
-    useEffect(() => {
-        if (isInView && !hasAnimated) {
-            setHasAnimated(true)
-        }
-    }, [isInView, hasAnimated])
 
     useEffect(() => {
         const activeTab = tabsRef.current[selectedTab]
@@ -134,25 +112,27 @@ export default function Skills() {
     return (
         <>
             <section
-                ref={sectionRef}
                 id={"skills"}
                 className={"relative overflow-hidden py-20 px-4 bg-[var(--foreground)] z-100"}
             >
-                <motion.div
-                    className="section"
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    variants={containerVariants}
-                >
-                    {/* Título com animação */}
-                    <motion.div variants={titleVariants}>
+                <div className="section">
+                   
+                    <motion.div
+                        variants={titleVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{once: true, amount: 0.3}}
+                    >
                         <Title text={"Skills"}/>
                     </motion.div>
 
-                    {/* Tabs com animação */}
+                    
                     <motion.div
                         className="relative flex items-center my-12 overflow-x-auto"
                         variants={tabsVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{once: true, amount: 0.3}}
                     >
                         <TabSection
                             ref={(el) => {
@@ -177,7 +157,7 @@ export default function Skills() {
                             ))
                         }
 
-                        {/* Indicador animado */}
+                
                         <div
                             className="absolute bottom-0 h-0.5 bg-[var(--primary)] transition-all duration-300 ease-out"
                             style={{
@@ -187,7 +167,7 @@ export default function Skills() {
                         />
                     </motion.div>
 
-                    {/* Grid de skills com animação em sequência */}
+      
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mt-8 justify-center md:justify-start">
                         <AnimatePresence mode="popLayout">
                             {
@@ -195,8 +175,9 @@ export default function Skills() {
                                     <motion.div
                                         key={skill.name}
                                         variants={skillVariants}
-                                        initial={hasAnimated ? {opacity: 0, scale: 0.8, y: 20} : "hidden"}
-                                        animate="visible"
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{once: true, amount: 0.2}}
                                         exit="exit"
                                         transition={{delay: index * 0.05}}
                                         layout
@@ -229,7 +210,7 @@ export default function Skills() {
                             }
                         </AnimatePresence>
                     </div>
-                </motion.div>
+                </div>
             </section>
         </>
     )
