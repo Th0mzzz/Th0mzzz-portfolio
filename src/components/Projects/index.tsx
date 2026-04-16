@@ -82,7 +82,7 @@ function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Some projects that i&apos;ve worked on, showcasing my skills and experience in various areas of software development. Each project is briefly described with links to code repositories and live demos.
+                    Some projects that i&apos;ve worked on, showcasing my skills and experience in various areas of software development.
                 </motion.p>
 
                 <div className="relative flex items-center mb-10 overflow-x-auto pb-2">
