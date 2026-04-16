@@ -4,9 +4,10 @@ type Position = 'top-right' | 'top-center' | 'top-left' | 'mid-right' | 'mid-cen
 
 interface DecorativeCirclesProps {
     position?: Position;
+    multip?: number;
 }
 
-export default function DecorativeCircles({ position = 'top-right' }: DecorativeCirclesProps) {
+export default function DecorativeCircles({ position = 'top-right' , multip = 1 }: DecorativeCirclesProps) {
     const positionStyles: Record<Position, { containerClass: string; circles: Array<{ size: number; color: string; top?: string; right?: string; left?: string; bottom?: string; opacity: number; delay: number }> }> = {
         'top-right': {
             containerClass: 'top-0 right-0',
@@ -85,7 +86,13 @@ export default function DecorativeCircles({ position = 'top-right' }: Decorative
     const { containerClass, circles } = positionStyles[position];
 
     return (
-        <div className={`absolute ${containerClass} w-0 h-0 pointer-events-none -z-50 overflow-visible`}>
+        <div
+            className={`absolute ${containerClass} w-0 h-0 pointer-events-none -z-50 overflow-visible`}
+            style={{
+                transform: `scale(${multip})`,
+                transformOrigin: '0 0',
+            }}
+        >
             {circles.map((circle, index) => (
                 <Circle key={index} {...circle} />
             ))}
