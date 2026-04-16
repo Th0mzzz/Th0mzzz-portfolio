@@ -56,7 +56,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                 </h3>
 
                 <p className="text text-gray-600 mb-4 line-clamp-3 flex-1">
-                    {project.description}
+                    {project.description.slice(0, 200)}{project.description.length > 200 ? "..." : ""}
                 </p>
 
 
