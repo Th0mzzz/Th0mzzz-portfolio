@@ -22,6 +22,7 @@ import BubbleHover from "../BubbleHover";
 import TabSection from "../Tab";
 import Title from "../Title";
 import {motion, AnimatePresence} from "framer-motion";
+import {useTranslations} from "next-intl";
 
 type SkillType = "frontend" | "backend" | "database" | "other";
 
@@ -87,14 +88,15 @@ const skillVariants = {
 };
 
 export default function Skills() {
-    const [selectedTab, setSelectedTab] = useState("All")
+    const t = useTranslations("skills");
+    const [selectedTab, setSelectedTab] = useState<SkillType | "all">("all")
     const [iconHovered, setIconHovered] = useState<string | null>(null)
     const [indicatorStyle, setIndicatorStyle] = useState({left: 0, width: 0})
     const tabsRef = useRef<{ [key: string]: HTMLButtonElement | null }>({})
 
     const skillsType = [...new Set(skills.map(skill => skill.type))]
 
-    const filteredSkills = selectedTab === "All"
+    const filteredSkills = selectedTab === "all"
         ? skills
         : skills.filter(skill => skill.type === selectedTab)
 
@@ -123,7 +125,7 @@ export default function Skills() {
                         whileInView="visible"
                         viewport={{once: true, amount: 0.3}}
                     >
-                        <Title text={"Skills"}/>
+                        <Title text={t("title")}/>
                     </motion.div>
 
                     
@@ -136,11 +138,11 @@ export default function Skills() {
                     >
                         <TabSection
                             ref={(el) => {
-                                tabsRef.current['All'] = el
+                                tabsRef.current['all'] = el
                             }}
-                            text={"All"}
-                            active={selectedTab === 'All'}
-                            onClick={() => setSelectedTab("All")}
+                            text={t("tabs.all")}
+                            active={selectedTab === 'all'}
+                            onClick={() => setSelectedTab("all")}
                         />
 
                         {
@@ -150,7 +152,7 @@ export default function Skills() {
                                     ref={(el) => {
                                         tabsRef.current[type] = el
                                     }}
-                                    text={type.charAt(0).toUpperCase() + type.slice(1)}
+                                    text={t(`tabs.${type}`)}
                                     active={selectedTab === type}
                                     onClick={() => setSelectedTab(type)}
                                 />

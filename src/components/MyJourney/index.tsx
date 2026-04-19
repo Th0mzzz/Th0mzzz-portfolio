@@ -4,8 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Title from "@/components/Title";
 import TabSection from "@/components/Tab";
 import TimelineCard from "./TimelineCard";
-import { journeyItems, journeyTabs } from "./data";
-import { JourneyCategory } from "./types";
+import {journeyItemBase, journeyTabKeys} from "./data";
+import {JourneyCategory, JourneyItem} from "./types";
+import {useTranslations} from "next-intl";
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,9 +34,23 @@ const itemVariants = {
 };
 
 export default function MyJourney() {
+    const t = useTranslations("journey");
     const [selectedCategory, setSelectedCategory] = useState<JourneyCategory>("all");
     const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
     const tabsRef = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+
+    const journeyTabs = journeyTabKeys.map((key) => ({
+        key,
+        label: t(`tabs.${key}`),
+    }));
+
+    const journeyItems: JourneyItem[] = journeyItemBase.map((item) => ({
+        ...item,
+        title: t(`items.${item.id}.title`),
+        organization: t(`items.${item.id}.organization`),
+        description: t(`items.${item.id}.description`),
+        endDate: item.isCurrent ? t("now") : item.endDate,
+    }));
 
     const filteredItems =
         selectedCategory === "all"
@@ -74,7 +89,7 @@ export default function MyJourney() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <Title text="My Journey" />
+                            <Title text={t("title")} />
                 </motion.div>
 
                   <motion.p
@@ -84,8 +99,7 @@ export default function MyJourney() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                    A timeline of my professional experience and academic background, showcasing
-                    the milestones that have shaped my career in software development.
+                    {t("description")}
                 </motion.p>
 
 

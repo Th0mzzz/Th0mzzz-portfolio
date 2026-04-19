@@ -5,7 +5,8 @@ export interface JourneyItem {
     organization: string;
     organizationLogo?: string;
     startDate: string;
-    endDate: string; // "Now" for current positions
+    endDate: string;
+    isCurrent?: boolean;
     description: string;
     skills?: string[];
 }

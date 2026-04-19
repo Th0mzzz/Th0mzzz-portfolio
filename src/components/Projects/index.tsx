@@ -6,10 +6,12 @@ import Title from "@/components/Title";
 import TabSection from "@/components/Tab";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
-import {categories, projects} from "./data";
+import {projectBase, projectCategoryKeys} from "./data";
 import {Project, ProjectCategory} from "./types";
+import {useTranslations} from "next-intl";
 
 function Projects() {
+    const t = useTranslations("projects");
     const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all");
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,6 +22,17 @@ function Projects() {
     const tabsRef = useRef<{ [key: string]: HTMLButtonElement | null }>({});
     const carouselRef = useRef<HTMLDivElement>(null);
 
+    const categories = projectCategoryKeys.map((key) => ({
+        key,
+        label: t(`categories.${key}`),
+    }));
+
+    const projects: Project[] = projectBase.map((project) => ({
+        ...project,
+        title: t(`items.${project.id}.title`),
+        description: t(`items.${project.id}.description`),
+        quote: t(`items.${project.id}.quote`),
+    }));
 
     const filteredProjects = selectedCategory === "all"
         ? projects
@@ -73,7 +86,7 @@ function Projects() {
         <section id={"projects"} className="relative py-20 bg-[var(--foreground)] z-100 overflow-hidden">
 
             <div className="section">
-                <Title text={"Projects"} />
+                <Title text={t("title")} />
 
 
                 <motion.p
@@ -82,7 +95,7 @@ function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Some projects that i&apos;ve worked on, showcasing my skills and experience in various areas of software development.
+                    {t("description")}
                 </motion.p>
 
                 <div className="relative flex items-center mb-10 overflow-x-auto pb-2">
@@ -198,8 +211,8 @@ function Projects() {
                         {filteredProjects.length}
                     </span>
                     <span className="text-gray-500">
-                        {filteredProjects.length === 1 ? 'projeto' : 'projetos'}
-                        {selectedCategory !== 'all' && ` em ${selectedCategory}`}
+                        {filteredProjects.length === 1 ? t("summary.single") : t("summary.plural")}
+                        {selectedCategory !== 'all' && `${t("summary.inCategoryPrefix")}${t(`categories.${selectedCategory}`)}`}
                     </span>
                 </motion.div>
             </div>

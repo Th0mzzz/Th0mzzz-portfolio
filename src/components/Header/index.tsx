@@ -3,18 +3,35 @@ import SmallLogo from "@/assets/th0mzzz-logo-sm.png";
 import {motion} from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useRef, useState} from "react";
+import {ChangeEvent, useEffect, useRef, useState, useTransition} from "react";
 import {HiOutlineMenuAlt4, HiOutlineMoon, HiOutlineSun} from "react-icons/hi";
 import {useTheme} from "next-themes";
 import {FaLinkedin} from "react-icons/fa";
 import {FaGithub} from "react-icons/fa6";
 import {HiMiniXMark} from "react-icons/hi2";
+import {useRouter} from "next/navigation";
+import {useLocale, useTranslations} from "next-intl";
+import {AppLocale, localeLabels, locales} from "@/i18n/config";
 
 export default function Header() {
+    const t = useTranslations();
+    const locale = useLocale();
+    const router = useRouter();
+    const [isSwitchingLocale, startLocaleTransition] = useTransition();
     const {theme, setTheme} = useTheme();
     const [openMenu, setOpenMenu] = useState(false);
+    const [isMobileViewport, setIsMobileViewport] = useState(false);
     const mobileMenuRef = useRef<HTMLDivElement>(null)
     const mobileMenuButtonRef = useRef<HTMLButtonElement>(null)
+
+    const navItems = [
+        {href: "#about", label: t("header.nav.about")},
+        {href: "#skills", label: t("header.nav.skills")},
+        {href: "#projects", label: t("header.nav.projects")},
+        {href: "#journey", label: t("header.nav.journey")},
+        {href: "#contact", label: t("header.nav.contact")},
+    ];
+
     const navItemVariants = {
         rest: {color: "var(--text)"},
         hover: {color: "var(--primary)"},
@@ -38,6 +55,33 @@ export default function Header() {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
+    const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        const nextLocale = event.target.value as AppLocale;
+
+        if (nextLocale === locale) {
+            return;
+        }
+
+        document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
+
+        startLocaleTransition(() => {
+            router.refresh();
+        });
+    };
+
+    useEffect(() => {
+        const updateViewport = () => {
+            setIsMobileViewport(window.innerWidth < 1024);
+        };
+
+        updateViewport();
+        window.addEventListener("resize", updateViewport);
+
+        return () => {
+            window.removeEventListener("resize", updateViewport);
+        };
+    }, []);
+
     useEffect(() => {
             const handleClickOutside = (event: MouseEvent) => {
                 if (!openMenu) return;
@@ -46,13 +90,7 @@ export default function Header() {
                 const clickedInsideMenu = mobileMenuRef.current?.contains(target);
                 const clickedMenuButton = mobileMenuButtonRef.current?.contains(target);
 
-                console.log("Clicou em:", target);
-                console.log("Menu ref:", mobileMenuRef.current);
-                console.log("Dentro do menu?", clickedInsideMenu);
-                console.log("Dentro do botão?", clickedMenuButton);
-
                 if (!clickedInsideMenu && !clickedMenuButton) {
-                    console.log("Fechando menu");
                     setOpenMenu(false);
                 }
             }
@@ -78,7 +116,7 @@ export default function Header() {
                  border border-[var(--border)] lg:border-0
                  ">
                     <Link href={"#home"} className="link">
-                        <Image src={SmallLogo} alt="Logo do Th0mzzz" className="w-15"/>
+                        <Image src={SmallLogo} alt={t("header.logoAlt")} className="w-15"/>
                     </Link>
 
 
@@ -86,7 +124,7 @@ export default function Header() {
                         ref={mobileMenuButtonRef}
                         className="lg:hidden"
                         onClick={() => setOpenMenu(!openMenu)}
-                        aria-label="Abrir menu"
+                        aria-label={t("header.openMenuAria")}
                     >
                         {openMenu ? <HiMiniXMark size={45} className="text-[var(--background)]"/>
 
@@ -97,13 +135,7 @@ export default function Header() {
                     <div
                         className="hidden lg:flex lg:relative lg:bg-transparent lg:backdrop-blur-none lg:p-0 lg:shadow-none lg:rounded-none lg:w-fit lg:border-0">
                         <ul className="flex items-center gap-8">
-                            {[
-                                {href: "#about", label: "About me"},
-                                {href: "#skills", label: "Skills"},
-                                {href: "#projects", label: "Projects"},
-                                {href: "#journey", label: "My Journey"},
-                                {href: "#contact", label: "Get in Touch"},
-                            ].map((item) => (
+                            {navItems.map((item) => (
                                 <li key={item.href + item.label}>
                                     <Link href={item.href} className="link">
                                         <motion.span
@@ -127,9 +159,25 @@ export default function Header() {
                                 </li>
                             ))}
                             <li className={"flex items-center gap-3"}>
+                                <label className="flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border)]/70">
+                                    <span className="text-[10px] uppercase tracking-wider text-[var(--text)]/70">{t("common.languageLabel")}</span>
+                                    <select
+                                        value={locale}
+                                        onChange={handleLocaleChange}
+                                        aria-label={t("common.languageLabel")}
+                                        disabled={isSwitchingLocale}
+                                        className="link bg-transparent text-sm cursor-pointer focus:outline-none disabled:opacity-60"
+                                    >
+                                        {locales.map((value) => (
+                                            <option key={value} value={value} className="text-[var(--text)] bg-[var(--foreground)]">
+                                                {localeLabels[value]}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </label>
                                 <motion.button
                                     type="button"
-                                    aria-label="Alternar tema"
+                                    aria-label={t("header.themeToggleAria")}
                                     onClick={toggleTheme}
                                     className="link text-[var(--text)] hover:!text-[var(--primary)]   rounded-full p-2 cursor-pointer"
                                     whileHover={{rotate: 90}}
@@ -181,7 +229,7 @@ export default function Header() {
                         }}
                         className="lg:hidden fixed top-25 left-0 w-full bg-radial from-[var(--border)]/40 to-[var(--border)]/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg z-50 border border-[var(--border)]"
                         initial={{opacity: 0, y: -20, display: "none"}}
-                        animate={openMenu && window.innerWidth < 1024 ? {
+                        animate={openMenu && isMobileViewport ? {
                             opacity: 1,
                             y: 20,
                             display: "block"
@@ -190,13 +238,7 @@ export default function Header() {
 
                     >
                         <ul className="flex flex-col items-start gap-6">
-                            {[
-                                {href: "#about", label: "About me"},
-                                {href: "#skills", label: "Skills"},
-                                {href: "#projects", label: "Projects"},
-                                {href: "#journey", label: "My Journey"},
-                                {href: "#contact", label: "Get in Touch"},
-                            ].map((item) => (
+                            {navItems.map((item) => (
                                 <li key={item.href + item.label} >
                                     <Link
                                         href={item.href}
@@ -208,9 +250,25 @@ export default function Header() {
                                 </li>
                             ))}
                             <li className="pt-4 border-t border-[var(--text)]/20 w-full flex items-center gap-3">
+                                <label className="flex items-center gap-2 px-2 py-1 rounded-full border border-[var(--text)]/25">
+                                    <span className="text-[10px] uppercase tracking-wider text-[var(--background)]/80">{t("common.languageLabel")}</span>
+                                    <select
+                                        value={locale}
+                                        onChange={handleLocaleChange}
+                                        aria-label={t("common.languageLabel")}
+                                        disabled={isSwitchingLocale}
+                                        className="link bg-transparent text-sm text-[var(--background)] cursor-pointer focus:outline-none disabled:opacity-60"
+                                    >
+                                        {locales.map((value) => (
+                                            <option key={value} value={value} className="text-black bg-white">
+                                                {localeLabels[value]}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </label>
                                 <motion.button
                                     type="button"
-                                    aria-label="Alternar tema"
+                                    aria-label={t("header.themeToggleAria")}
                                     onClick={toggleTheme}
                                     className="link text-[var(--background)] hover:!text-[var(--primary)] rounded-full p-2 cursor-pointer"
                                     whileHover={{rotate: 90}}

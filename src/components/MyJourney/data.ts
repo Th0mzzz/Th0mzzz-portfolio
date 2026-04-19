@@ -1,22 +1,25 @@
-import { JourneyItem, JourneyTab } from "./types";
+import {JourneyCategory} from "./types";
 
-export const journeyTabs: JourneyTab[] = [
-  { key: "all", label: "All" },
-  { key: "work", label: "Work Experience" },
-  { key: "education", label: "Education" },
-];
+export interface JourneyBaseItem {
+  id: string;
+  category: Exclude<JourneyCategory, "all">;
+  organizationLogo?: string;
+  startDate: string;
+  endDate: string;
+  isCurrent?: boolean;
+  skills?: string[];
+}
 
-export const journeyItems: JourneyItem[] = [
+export const journeyTabKeys: JourneyCategory[] = ["all", "work", "education"];
+
+export const journeyItemBase: JourneyBaseItem[] = [
   {
     id: "1",
     category: "work",
-    title: "IT Advisor - Web Developer",
-    organization: "Jandira City Hall",
     organizationLogo: "",
     startDate: "02/2025",
-    endDate: "Now",
-    description:
-      "I'm currently working as an IT Advisor/Web Developer at Jandira's City Hall, providing technical support to various departments and developing web applications that improve internal processes and public services.",
+    endDate: "",
+    isCurrent: true,
     skills: [
       "React",
       "Figma",
@@ -36,13 +39,9 @@ export const journeyItems: JourneyItem[] = [
   {
     id: "2",
     category: "work",
-    title: "Internship - Web Developer",
-    organization: "Jandira City Hall",
     organizationLogo: "",
     startDate: "07/2023",
     endDate: "12/2024",
-    description:
-      "Internship focused on web development, building internal web applications and providing technical support to various departments.",
     skills: [
       "HTML",
       "CSS",
@@ -57,13 +56,9 @@ export const journeyItems: JourneyItem[] = [
   {
     id: "3",
     category: "education",
-    title: "Information for Internet Technical Course",
-    organization: "FIEBTECH",
     organizationLogo: "",
     startDate: "01/2022",
     endDate: "12/2024",
-    description:
-      "An Technical course focused on software development, covering programming fundamentals, database management, web development, and software engineering principles.",
     skills: [
       "JavaScript",
       "Node.JS",
@@ -79,12 +74,8 @@ export const journeyItems: JourneyItem[] = [
   {
     id: "4",
     category: "education",
-    title: "Software Engineering",
-    organization: "FIAP",
     startDate: "01/2025",
     endDate: "12/2028",
-    description:
-      "A Bachelor's degree program in Software Engineering, covering software development methodologies, programming languages, database management, and software architecture.",
     skills: [
       "Scrum",
       "Figma",
@@ -106,12 +97,8 @@ export const journeyItems: JourneyItem[] = [
   {
     id: "5",
     category: "education",
-    title: "English Course",
-    organization: "Wizard",
     startDate: "09/2023",
     endDate: "09/2026",
-    description:
-      "An intensive English course focused on improving communication skills, including listening, speaking, reading, and writing.",
     skills: [
       "English",
       "Communication",

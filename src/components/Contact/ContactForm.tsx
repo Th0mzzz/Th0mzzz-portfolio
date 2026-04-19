@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
+import {useTranslations} from "next-intl";
 
 const fieldVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -17,6 +18,7 @@ const inputClasses =
 
 export default function ContactForm() {
     const [focused, setFocused] = useState<string | null>(null);
+    const t = useTranslations("contact.form");
 
     return (
         <motion.div
@@ -28,7 +30,7 @@ export default function ContactForm() {
         >
             <h3 className="title text-lg mb-8 flex items-center gap-2">
                 <FiSend className="w-5 h-5 text-[var(--primary)]" />
-                Send me an E-mail
+                {t("heading")}
             </h3>
 
             <form
@@ -48,12 +50,12 @@ export default function ContactForm() {
                         viewport={{ once: true }}
                     >
                         <label className="text text-xs uppercase tracking-wider text-gray-400 mb-1 block">
-                            Name
+                            {t("fields.name")}
                         </label>
                         <input
                             type="text"
                             name="name"
-                            placeholder="Write your complete name"
+                            placeholder={t("placeholders.name")}
                             required
                             className={inputClasses}
                             onFocus={() => setFocused('name')}
@@ -75,12 +77,12 @@ export default function ContactForm() {
                         viewport={{ once: true }}
                     >
                         <label className="text text-xs uppercase tracking-wider text-gray-400 mb-1 block">
-                            E-mail
+                            {t("fields.email")}
                         </label>
                         <input
                             type="email"
                             name="email"
-                            placeholder="you@example.com"
+                            placeholder={t("placeholders.email")}
                             required
                             className={inputClasses}
                             onFocus={() => setFocused('email')}
@@ -103,12 +105,12 @@ export default function ContactForm() {
                     viewport={{ once: true }}
                 >
                     <label className="text text-xs uppercase tracking-wider text-gray-400 mb-1 block">
-                        Subject
+                        {t("fields.subject")}
                     </label>
                     <input
                         type="text"
                         name="_subject"
-                        placeholder="What's the discussion"
+                        placeholder={t("placeholders.subject")}
                         required
                         className={inputClasses}
                         onFocus={() => setFocused('subject')}
@@ -130,12 +132,12 @@ export default function ContactForm() {
                     viewport={{ once: true }}
                 >
                     <label className="text text-xs uppercase tracking-wider text-gray-400 mb-1 block">
-                        Your message
+                        {t("fields.message")}
                     </label>
                     <textarea
                         name="message"
                         rows={4}
-                        placeholder="Write your message..."
+                        placeholder={t("placeholders.message")}
                         required
                         className={`${inputClasses} resize-none`}
                         onFocus={() => setFocused('message')}
@@ -163,7 +165,7 @@ export default function ContactForm() {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                     >
-                        Submit
+                        {t("submit")}
                     </motion.button>
                 </motion.div>
             </form>

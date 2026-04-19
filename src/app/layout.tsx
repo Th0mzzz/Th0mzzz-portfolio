@@ -8,38 +8,48 @@ import {gliker} from "@/lib/fonts";
 import SmoothScrollInit from "@/components/SmoothScrollInit";
 import ScrollToTop from "@/components/ScrollToTop";
 import DecorativeCircles from "@/components/DecorativeCircles";
+import {NextIntlClientProvider} from "next-intl";
+import {getLocale, getMessages, getTranslations} from "next-intl/server";
 
-export const metadata: Metadata = {
-    title: "Th0mzzz",
-    description: "Eu sou Thomaz, um desenvolvedor Full Stack apaixonado por tecnologia e inovação e esse é meu portifólio profissional.",
-    icons: {
-        icon: '/th0mzzz-logo-sm.png',
-        shortcut: '/th0mzzz-logo-sm.png',
-        apple: '/th0mzzz-logo-sm.png',
-    },
+export async function generateMetadata(): Promise<Metadata> {
+    const t = await getTranslations("metadata");
 
-};
+    return {
+        title: t("title"),
+        description: t("description"),
+        icons: {
+            icon: "/th0mzzz-logo-sm.png",
+            shortcut: "/th0mzzz-logo-sm.png",
+            apple: "/th0mzzz-logo-sm.png",
+        },
+    };
+}
 
 
-export default function RootLayout({
+export default async function RootLayout({
                                        children,
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const locale = await getLocale();
+    const messages = await getMessages();
+
     return (
-        <html lang="pt-br" suppressHydrationWarning id="home" className="overflow-x-clip">
+        <html lang={locale} suppressHydrationWarning id="home" className="overflow-x-clip">
 
         <body suppressHydrationWarning className={`antialiased ${gliker.variable} overflow-x-clip`}>
-        <GlobalContextProvider>
-            <div className="relative w-full overflow-x-clip">
-                <SmoothScrollInit/>
-                <AnimatedBackground/>
-                <Header/>
-                <ScrollToTop/>
-                <DecorativeCircles position="top-right"/>
-                {children}
-            </div>
-        </GlobalContextProvider>
+        <NextIntlClientProvider messages={messages}>
+            <GlobalContextProvider>
+                <div className="relative w-full overflow-x-clip">
+                    <SmoothScrollInit/>
+                    <AnimatedBackground/>
+                    <Header/>
+                    <ScrollToTop/>
+                    <DecorativeCircles position="top-right"/>
+                    {children}
+                </div>
+            </GlobalContextProvider>
+        </NextIntlClientProvider>
         </body>
         </html>
     );

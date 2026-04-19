@@ -3,6 +3,7 @@ import {motion, AnimatePresence} from "framer-motion";
 import {FiX, FiGithub, FiExternalLink} from "react-icons/fi";
 import {Project, TechStack} from "./types";
 import Circle from "@/components/Circle";
+import {useTranslations} from "next-intl";
 
 interface ProjectModalProps {
     project: Project | null;
@@ -11,7 +12,19 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({project, isOpen, onClose}: ProjectModalProps) {
+    const tModal = useTranslations("projects.modal");
+    const tCard = useTranslations("projects.card");
+    const tCategory = useTranslations("projects.categories");
+
     if (!project) return null;
+
+    const categoryLabel =
+        project.category === "frontend" ||
+        project.category === "fullstack" ||
+        project.category === "backend" ||
+        project.category === "all"
+            ? tCategory(project.category)
+            : project.category;
 
     return (
         <AnimatePresence>
@@ -70,7 +83,7 @@ export default function ProjectModal({project, isOpen, onClose}: ProjectModalPro
                                     >
                                         <img
                                             src={project.image}
-                                            alt={`Preview do projeto ${project.title}`}
+                                            alt={tCard("previewAlt", {title: project.title})}
                                             className="w-full h-full object-cover"
                                         />
                                         <div
@@ -86,12 +99,12 @@ export default function ProjectModal({project, isOpen, onClose}: ProjectModalPro
                                             </span>
                                             <span
                                                 className="text-xs px-3 py-1 bg-[var(--background)] rounded-full uppercase tracking-wider">
-                                                {project.category}
+                                                {categoryLabel}
                                             </span>
                                             {project.featured && (
                                                 <span
                                                     className="text-xs px-3 py-1 bg-[var(--primary)] text-white rounded-full">
-                                                    Featured
+                                                    {tModal("featured")}
                                                 </span>
                                             )}
                                         </div>
@@ -116,14 +129,14 @@ export default function ProjectModal({project, isOpen, onClose}: ProjectModalPro
 
 
                                 <div className="mb-8">
-                                    <h3 className="title text-lg mb-3">Sobre o Projeto</h3>
+                                    <h3 className="title text-lg mb-3">{tModal("aboutProject")}</h3>
                                     <p className="text leading-relaxed text-gray-700">
                                         {project.description}
                                     </p>
                                 </div>
 
                                 <div className="mb-8">
-                                    <h3 className="title text-lg mb-4">Tech Stack</h3>
+                                    <h3 className="title text-lg mb-4">{tModal("techStack")}</h3>
                                     <div className="flex flex-wrap gap-3">
                                         {project.techStack.map((tech: TechStack, idx: number) => (
                                             <motion.div
@@ -153,7 +166,7 @@ export default function ProjectModal({project, isOpen, onClose}: ProjectModalPro
                                             whileTap={{scale: 0.98}}
                                         >
                                             <FiGithub className="w-5 h-5"/>
-                                            Ver no GitHub
+                                            {tModal("viewGithub")}
                                         </motion.a>
                                     )}
                                     {project.liveUrl && (
@@ -166,7 +179,7 @@ export default function ProjectModal({project, isOpen, onClose}: ProjectModalPro
                                             whileTap={{scale: 0.98}}
                                         >
                                             <FiExternalLink className="w-5 h-5"/>
-                                            Ver Projeto
+                                            {tModal("viewProject")}
                                         </motion.a>
                                     )}
                                 </div>

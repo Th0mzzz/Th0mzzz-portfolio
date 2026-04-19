@@ -1,0 +1,184 @@
+{
+  "metadata": {
+    "title": "Th0mzzz",
+    "description": "Eu sou Thomaz, um desenvolvedor Full Stack apaixonado por tecnologia e inovação e esse é meu portifólio profissional."
+  },
+  "common": {
+    "languageLabel": "Idioma",
+    "languageOptions": {
+      "en": "Inglês",
+      "pt-BR": "Português (Brasil)"
+    }
+  },
+  "header": {
+    "logoAlt": "Logo do Th0mzzz",
+    "openMenuAria": "Abrir menu",
+    "themeToggleAria": "Alternar tema",
+    "nav": {
+      "about": "Sobre mim",
+      "skills": "Habilidades",
+      "projects": "Projetos",
+      "journey": "Minha Jornada",
+      "contact": "Entre em Contato"
+    }
+  },
+  "hero": {
+    "logoAlt": "Desenho de uma lua vermelha",
+    "role": "Desenvolvedor Web",
+    "scrollDown": "Role para baixo"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "greeting": "Oi, eu sou o Thomaz!",
+    "paragraph1": "Eu desenvolvo soluções que abrangem tanto <strong>frontend</strong> quanto <strong>backend</strong>, usando principalmente <strong>JavaScript</strong>, com foco em <strong>criação e integração de APIs</strong> e no trabalho com <strong>estruturas de dados complexas</strong>.",
+    "paragraph2": "Construo interfaces <strong>simples</strong>, <strong>acessíveis</strong> e orientadas por princípios sólidos de <strong>UI/UX</strong> para melhorar como as pessoas interagem com sistemas. Já trabalhei em projetos que <strong>simplificam</strong> e <strong>automatizam fluxos de trabalho</strong>, <strong>digitalizando processos</strong> e <strong>ajudando equipes a trabalhar com mais eficiência</strong>.",
+    "buttons": {
+      "contact": "Entre em contato",
+      "downloadCv": "Baixar CV"
+    },
+    "traits": {
+      "proactivity": {
+        "title": "Proatividade",
+        "description": "Eu sempre me esforço para ser proativo, buscando erros, encontrando novas soluções para problemas e organizando fluxos de trabalho."
+      },
+      "teamwork": {
+        "title": "Trabalho em Equipe",
+        "description": "Sou bom em criar novas conexões e manter o ambiente de trabalho mais positivo e eficiente."
+      },
+      "leadership": {
+        "title": "Liderança",
+        "description": "Estou sempre disposto a ajudar meus colegas de trabalho e organizar projetos e ideias."
+      }
+    },
+    "profileAlt": "Homem jovem branco com cabelos cacheados e barba curta castanhos claros, usando uma camisa azul clara, sorrindo e olhando para a câmera."
+  },
+  "skills": {
+    "title": "Habilidades",
+    "tabs": {
+      "all": "Todos",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "other": "Outros"
+    }
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Alguns projetos em que trabalhei, mostrando minhas habilidades e experiência em diferentes áreas do desenvolvimento de software.",
+    "categories": {
+      "all": "Todos",
+      "frontend": "Frontend",
+      "fullstack": "Fullstack",
+      "backend": "Backend"
+    },
+    "summary": {
+      "single": "projeto",
+      "plural": "projetos",
+      "inCategoryPrefix": " em "
+    },
+    "card": {
+      "previewAlt": "Prévia do projeto {title}",
+      "githubTitle": "Ver no GitHub",
+      "liveTitle": "Ver projeto",
+      "readMore": "Ver mais"
+    },
+    "modal": {
+      "featured": "Destaque",
+      "aboutProject": "Sobre o Projeto",
+      "techStack": "Tecnologias",
+      "viewGithub": "Ver no GitHub",
+      "viewProject": "Ver Projeto"
+    },
+    "items": {
+      "1": {
+        "title": "Jandira Official Website",
+        "description": "'Jandira Official Website' é um site oficial para a cidade de Jandira, fornecendo informações sobre a cidade, sua história, cultura, turismo e serviços públicos, como comunicados da prefeitura, lista de eventos e serviços digitais. O site apresenta design moderno, layout responsivo e elementos interativos para melhorar a experiência do usuário.",
+        "quote": "Jandira na ponta dos dedos — tudo sobre a cidade, em um só lugar."
+      },
+      "2": {
+        "title": "QuasArt",
+        "description": "Quasart é o seu novo destino para explorar o universo do entretenimento — filmes, séries, livros, stand-up, podcasts e teatro, tudo em um só lugar. Feito para destacar o que está em alta e adaptado às suas preferências, seu próximo favorito está a poucos cliques de distância. Seja você um fã em busca de novas descobertas ou uma empresa querendo ampliar seu alcance, Quasart é onde tudo se conecta.",
+        "quote": "Crie seu próprio universo e deixe sua criatividade fluir por vídeos, resenhas e perfis."
+      }
+    }
+  },
+  "journey": {
+    "title": "Minha Jornada",
+    "description": "Uma linha do tempo da minha experiência profissional e trajetória acadêmica, destacando os marcos que moldaram minha carreira em desenvolvimento de software.",
+    "tabs": {
+      "all": "Todos",
+      "work": "Experiência Profissional",
+      "education": "Educação"
+    },
+    "now": "Atualmente",
+    "items": {
+      "1": {
+        "title": "Assessor de TI - Desenvolvedor Web",
+        "organization": "Prefeitura de Jandira",
+        "description": "Atualmente atuo como Assessor de TI/Desenvolvedor Web na Prefeitura de Jandira, oferecendo suporte técnico para diferentes departamentos e desenvolvendo aplicações web que melhoram processos internos e serviços públicos."
+      },
+      "2": {
+        "title": "Estágio - Desenvolvedor Web",
+        "organization": "Prefeitura de Jandira",
+        "description": "Estágio focado em desenvolvimento web, criando aplicações internas e oferecendo suporte técnico para diversos departamentos."
+      },
+      "3": {
+        "title": "Curso Técnico em Informática para Internet",
+        "organization": "FIEBTECH",
+        "description": "Curso técnico focado em desenvolvimento de software, cobrindo fundamentos de programação, gerenciamento de banco de dados, desenvolvimento web e princípios de engenharia de software."
+      },
+      "4": {
+        "title": "Engenharia de Software",
+        "organization": "FIAP",
+        "description": "Graduação em Engenharia de Software, abrangendo metodologias de desenvolvimento, linguagens de programação, gerenciamento de banco de dados e arquitetura de software."
+      },
+      "5": {
+        "title": "Curso de Inglês",
+        "organization": "Wizard",
+        "description": "Curso intensivo de inglês focado no aprimoramento da comunicação, incluindo escuta, fala, leitura e escrita."
+      }
+    }
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Vamos construir algo incrível juntos!",
+    "info": {
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "Thomaz Vasconcelos Mendes"
+      },
+      "email": {
+        "label": "E-mail",
+        "value": "contatothomazvmendes@gmail.com",
+        "subject": "Contato pelo Portfólio",
+        "body": "Mensagem enviada pelo formulário do portfólio"
+      },
+      "location": {
+        "label": "Localização",
+        "value": "Barueri, SP — Brasil"
+      }
+    },
+    "form": {
+      "heading": "Me envie um E-mail",
+      "fields": {
+        "name": "Nome",
+        "email": "E-mail",
+        "subject": "Assunto",
+        "message": "Sua mensagem"
+      },
+      "placeholders": {
+        "name": "Escreva seu nome completo",
+        "email": "voce@exemplo.com",
+        "subject": "Qual é o assunto",
+        "message": "Escreva sua mensagem..."
+      },
+      "submit": "Enviar"
+    }
+  },
+  "scrollToTop": {
+    "ariaLabel": "Voltar ao topo"
+  },
+  "footer": {
+    "copyright": "Copyright © {year} Thomaz Vasconcelos Mendes. Todos os direitos reservados."
+  }
+}

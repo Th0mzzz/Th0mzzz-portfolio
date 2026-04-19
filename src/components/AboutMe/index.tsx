@@ -7,8 +7,11 @@ import foto from "@/assets/img/foto.png";
 import {motion} from 'framer-motion';
 import DecorativeCircles from "@/components/DecorativeCircles";
 import BubbleHover from "@/components/BubbleHover";
+import {useTranslations} from "next-intl";
 
 export default function AboutMe() {
+    const t = useTranslations("about");
+
     return (
         <>
             <section
@@ -23,23 +26,18 @@ export default function AboutMe() {
                         viewport={{once: true, amount: 0.3}}
                         transition={{duration: 0.7, ease: 'easeOut'}}
                         className="flex flex-col gap-4 py-4 max-w-[700px]">
-                        <Title text={"About Me"}/>
+                        <Title text={t("title")}/>
 
-                        <h3 className={"supertitle"}>Hi, I&apos;m Thomaz!</h3>
+                        <h3 className={"supertitle"}>{t("greeting")}</h3>
                         <p className="text my-4 ">
-                            I develop solutions that span
-                            both <strong>frontend</strong> and <strong>backend</strong> using
-                            mainly <strong>JavaScript</strong>, with a
-                            focus on <strong>creating and integrating APIs</strong> and working with <strong>complex
-                            data structures</strong>.
+                            {t.rich("paragraph1", {
+                                strong: (chunks) => <strong>{chunks}</strong>,
+                            })}
                             <br/>
                             <br/>
-                            I build designs that are <strong>simple</strong>, <strong>accessible</strong>, and
-                            guided by
-                            solid <strong>UI/UX</strong> principles to improve
-                            how people interact with systems. I’ve worked on projects
-                            that <strong>simplify</strong> and <strong>automate workflows</strong>, <strong>digitalizing
-                            processes</strong> and <strong> helping teams work more efficiently</strong>
+                            {t.rich("paragraph2", {
+                                strong: (chunks) => <strong>{chunks}</strong>,
+                            })}
                         </p>
                         <div className="flex gap-2 flex-col sm:flex-row">
                             <Button width={"100%"} margin={"0 auto"} onClick={() => {
@@ -51,28 +49,24 @@ export default function AboutMe() {
                                 }
                             }}
                             >
-                                Get in touch
+                                {t("buttons.contact")}
                             </Button>
                             <Button width={"100%"} margin={"0 auto"}>
-                                Download CV
+                                {t("buttons.downloadCv")}
                             </Button>
                         </div>
                         <div className="flex gap-2 flex-col lg:flex-row mt-10">
                             <BubbleHover width={"100%"}>
-                                <h4 className="link">Pro-activity</h4>
-                                <p className="text mt-2">I always work hard to be proactive, seeking out errors, finding
-                                    new
-                                    solutions to problems and organizing workflows.</p>
+                                <h4 className="link">{t("traits.proactivity.title")}</h4>
+                                <p className="text mt-2">{t("traits.proactivity.description")}</p>
                             </BubbleHover>
                             <BubbleHover width={"100%"}>
-                                <h4 className="link">Team Work</h4>
-                                <p className="text mt-2">I’m good making new connections and keeping the workspace more
-                                    positive and efficient.</p>
+                                <h4 className="link">{t("traits.teamwork.title")}</h4>
+                                <p className="text mt-2">{t("traits.teamwork.description")}</p>
                             </BubbleHover>
                             <BubbleHover width={"100%"}>
-                                <h4 className="link">Leadership</h4>
-                                <p className="text mt-2">I always look forward to help my co-workers and organize projects and
-                                    ideas.</p>
+                                <h4 className="link">{t("traits.leadership.title")}</h4>
+                                <p className="text mt-2">{t("traits.leadership.description")}</p>
                             </BubbleHover>
                         </div>
                     </motion.div>
@@ -84,7 +78,7 @@ export default function AboutMe() {
                         transition={{duration: 0.7, ease: 'easeOut'}}
                     >
                         <Image src={foto}
-                               alt={"Homem jovem branco com cabelos cacheados e barba curta castanhos claros, usando uma camisa azul clara, sorrindo e olhando para a câmera."}
+                               alt={t("profileAlt")}
                                style={{
                                    width: "100%",
                                    filter: "drop-shadow(2px 2px 0 10px var(--text)) "

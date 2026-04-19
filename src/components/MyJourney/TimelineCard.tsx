@@ -81,8 +81,8 @@ export default function TimelineCard({ item, index }: TimelineCardProps) {
                             </span>
                         </div>
                         <span className="text text-gray-400 font-medium whitespace-nowrap">
-                            {item.startDate} → {item.endDate === "Now" ? (
-                                <span className="text-[var(--primary)] font-semibold">Now</span>
+                            {item.startDate} → {item.isCurrent ? (
+                                <span className="text-[var(--primary)] font-semibold">{item.endDate}</span>
                             ) : item.endDate}
                         </span>
                     </div>

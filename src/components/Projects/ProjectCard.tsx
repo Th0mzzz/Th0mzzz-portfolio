@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink, FiArrowRight } from "react-icons/fi";
 import { Project, TechStack } from "./types";
+import {useTranslations} from "next-intl";
 
 interface ProjectCardProps {
     project: Project;
@@ -10,6 +11,16 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, onOpenModal, index }: ProjectCardProps) {
+    const tCard = useTranslations("projects.card");
+    const tCategory = useTranslations("projects.categories");
+    const categoryLabel =
+        project.category === "frontend" ||
+        project.category === "fullstack" ||
+        project.category === "backend" ||
+        project.category === "all"
+            ? tCategory(project.category)
+            : project.category;
+
     return (
         <motion.article
             className="group relative bg-[var(--background)] rounded-2xl overflow-hidden cursor-pointer h-full flex flex-col"
@@ -24,7 +35,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                 <div className="relative w-full h-40 overflow-hidden">
                     <img
                         src={project.image}
-                        alt={`Preview do projeto ${project.title}`}
+                        alt={tCard("previewAlt", {title: project.title})}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-transparent to-black/40" />
@@ -34,7 +45,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                             {project.year}
                         </span>
                         <span className="text bg-[var(--foreground)]/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs uppercase tracking-wider">
-                            {project.category}
+                            {categoryLabel}
                         </span>
                     </div>
                 </div>
@@ -45,7 +56,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                         {project.year}
                     </span>
                     <span className="text px-3 py-1 bg-[var(--foreground)] rounded-full text-xs uppercase tracking-wider">
-                        {project.category}
+                        {categoryLabel}
                     </span>
                 </div>
             )}
@@ -93,7 +104,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 className="p-2 hover:bg-[var(--foreground)] rounded-full transition-colors"
-                                title="Ver no GitHub"
+                                title={tCard("githubTitle")}
                             >
                                 <FiGithub className="w-5 h-5" />
                             </a>
@@ -105,7 +116,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}
                                 className="p-2 hover:bg-[var(--foreground)] rounded-full transition-colors"
-                                title="Ver projeto"
+                                title={tCard("liveTitle")}
                             >
                                 <FiExternalLink className="w-5 h-5" />
                             </a>
@@ -116,7 +127,7 @@ export default function ProjectCard({ project, onOpenModal, index }: ProjectCard
                         className="flex items-center gap-2 text-sm font-medium text-[var(--primary)] hover:gap-3 transition-all"
                         whileHover={{ x: 3 }}
                     >
-                        Ver mais <FiArrowRight />
+                        {tCard("readMore")} <FiArrowRight />
                     </motion.button>
                 </div>
             </div>

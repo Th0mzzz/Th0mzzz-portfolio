@@ -3,8 +3,10 @@ import logo from "@/assets/th0mzzz-logo-sm.png";
 import { motion } from "motion/react";
 import Image from "next/image";
 import {HiArrowDown} from "react-icons/hi";
+import {useTranslations} from "next-intl";
 
 export default function HeroSection() {
+    const t = useTranslations("hero");
 
 
     return (
@@ -56,7 +58,7 @@ export default function HeroSection() {
 
                     <Image
                         src={logo}
-                        alt="Desenho de uma lua vermelha"
+                        alt={t("logoAlt")}
 
                         priority
                     />
@@ -84,7 +86,7 @@ export default function HeroSection() {
 
             <h2 className="subtitle flex items-center gap-2 font-bold">
                 <span className="text-[var(--primary)] text-xl sm:text-2xl md:text-3xl">{"{ "}</span>
-                Web Developer
+                {t("role")}
                 <span className="text-[var(--primary)] text-xl sm:text-2xl md:text-3xl">{" }"}</span>
             </h2>
 
@@ -92,7 +94,7 @@ export default function HeroSection() {
                 href={"#about"}
                 className="flex flex-col items-center justify-center gap-5 mt-50 md:mt-20 cursor-pointer relative mb-[400px]"
             >
-                <span className="link md:text-base">Scroll Down</span>
+                <span className="link md:text-base">{t("scrollDown")}</span>
                 <span className="animate-bounce text-3xl"><HiArrowDown size={35} /></span>
             </a>
 

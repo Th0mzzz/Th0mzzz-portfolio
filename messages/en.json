@@ -1,0 +1,184 @@
+{
+  "metadata": {
+    "title": "Th0mzzz",
+    "description": "Eu sou Thomaz, um desenvolvedor Full Stack apaixonado por tecnologia e inovação e esse é meu portifólio profissional."
+  },
+  "common": {
+    "languageLabel": "Language",
+    "languageOptions": {
+      "en": "English",
+      "pt-BR": "Português (Brasil)"
+    }
+  },
+  "header": {
+    "logoAlt": "Logo do Th0mzzz",
+    "openMenuAria": "Abrir menu",
+    "themeToggleAria": "Alternar tema",
+    "nav": {
+      "about": "About me",
+      "skills": "Skills",
+      "projects": "Projects",
+      "journey": "My Journey",
+      "contact": "Get in Touch"
+    }
+  },
+  "hero": {
+    "logoAlt": "Desenho de uma lua vermelha",
+    "role": "Web Developer",
+    "scrollDown": "Scroll Down"
+  },
+  "about": {
+    "title": "About Me",
+    "greeting": "Hi, I'm Thomaz!",
+    "paragraph1": "I develop solutions that span both <strong>frontend</strong> and <strong>backend</strong> using mainly <strong>JavaScript</strong>, with a focus on <strong>creating and integrating APIs</strong> and working with <strong>complex data structures</strong>.",
+    "paragraph2": "I build designs that are <strong>simple</strong>, <strong>accessible</strong>, and guided by solid <strong>UI/UX</strong> principles to improve how people interact with systems. I’ve worked on projects that <strong>simplify</strong> and <strong>automate workflows</strong>, <strong>digitalizing processes</strong> and <strong> helping teams work more efficiently</strong>",
+    "buttons": {
+      "contact": "Get in touch",
+      "downloadCv": "Download CV"
+    },
+    "traits": {
+      "proactivity": {
+        "title": "Pro-activity",
+        "description": "I always work hard to be proactive, seeking out errors, finding new solutions to problems and organizing workflows."
+      },
+      "teamwork": {
+        "title": "Team Work",
+        "description": "I’m good making new connections and keeping the workspace more positive and efficient."
+      },
+      "leadership": {
+        "title": "Leadership",
+        "description": "I always look forward to help my co-workers and organize projects and ideas."
+      }
+    },
+    "profileAlt": "Homem jovem branco com cabelos cacheados e barba curta castanhos claros, usando uma camisa azul clara, sorrindo e olhando para a câmera."
+  },
+  "skills": {
+    "title": "Skills",
+    "tabs": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database",
+      "other": "Other"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Some projects that i've worked on, showcasing my skills and experience in various areas of software development.",
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "fullstack": "Fullstack",
+      "backend": "Backend"
+    },
+    "summary": {
+      "single": "projeto",
+      "plural": "projetos",
+      "inCategoryPrefix": " em "
+    },
+    "card": {
+      "previewAlt": "Preview do projeto {title}",
+      "githubTitle": "Ver no GitHub",
+      "liveTitle": "Ver projeto",
+      "readMore": "Ver mais"
+    },
+    "modal": {
+      "featured": "Featured",
+      "aboutProject": "Sobre o Projeto",
+      "techStack": "Tech Stack",
+      "viewGithub": "Ver no GitHub",
+      "viewProject": "Ver Projeto"
+    },
+    "items": {
+      "1": {
+        "title": "Jandira Official Website",
+        "description": "'Jandira Official Website' is an official website for the city of Jandira, providing information about the city, its history, culture, tourism, and public services like city announcements and event listings and digital services. The website features a modern design, responsive layout, and interactive elements to enhance user experience.",
+        "quote": "Jandira at your fingertips — everything about the city, in one place."
+      },
+      "2": {
+        "title": "QuasArt",
+        "description": "Quasart is your new go-to destination for exploring the world of entertainment — movies, series, books, stand-up, podcasts, and theater, all in one place. Built to highlight what's trending and tailored to your preferences, your next favorite is just a few clicks away. Whether you're a fan hungry for new discoveries or a business looking to expand your reach, Quasart is where it all comes together.",
+        "quote": "Create your own universe and let your creativity flow through videos, reviews, and profiles."
+      }
+    }
+  },
+  "journey": {
+    "title": "My Journey",
+    "description": "A timeline of my professional experience and academic background, showcasing the milestones that have shaped my career in software development.",
+    "tabs": {
+      "all": "All",
+      "work": "Work Experience",
+      "education": "Education"
+    },
+    "now": "Now",
+    "items": {
+      "1": {
+        "title": "IT Advisor - Web Developer",
+        "organization": "Jandira City Hall",
+        "description": "I'm currently working as an IT Advisor/Web Developer at Jandira's City Hall, providing technical support to various departments and developing web applications that improve internal processes and public services."
+      },
+      "2": {
+        "title": "Internship - Web Developer",
+        "organization": "Jandira City Hall",
+        "description": "Internship focused on web development, building internal web applications and providing technical support to various departments."
+      },
+      "3": {
+        "title": "Information for Internet Technical Course",
+        "organization": "FIEBTECH",
+        "description": "An Technical course focused on software development, covering programming fundamentals, database management, web development, and software engineering principles."
+      },
+      "4": {
+        "title": "Software Engineering",
+        "organization": "FIAP",
+        "description": "A Bachelor's degree program in Software Engineering, covering software development methodologies, programming languages, database management, and software architecture."
+      },
+      "5": {
+        "title": "English Course",
+        "organization": "Wizard",
+        "description": "An intensive English course focused on improving communication skills, including listening, speaking, reading, and writing."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let's build something incredible together!",
+    "info": {
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "Thomaz Vasconcelos Mendes"
+      },
+      "email": {
+        "label": "E-mail",
+        "value": "contatothomazvmendes@gmail.com",
+        "subject": "Contato pelo Portfólio",
+        "body": "Teste de mensagem para Thomaz"
+      },
+      "location": {
+        "label": "Location",
+        "value": "Barueri, SP — Brasil"
+      }
+    },
+    "form": {
+      "heading": "Send me an E-mail",
+      "fields": {
+        "name": "Name",
+        "email": "E-mail",
+        "subject": "Subject",
+        "message": "Your message"
+      },
+      "placeholders": {
+        "name": "Write your complete name",
+        "email": "you@example.com",
+        "subject": "What's the discussion",
+        "message": "Write your message..."
+      },
+      "submit": "Submit"
+    }
+  },
+  "scrollToTop": {
+    "ariaLabel": "Voltar ao topo"
+  },
+  "footer": {
+    "copyright": "Copyright © {year} Thomaz Vasconcelos Mendes. All rights reserved."
+  }
+}

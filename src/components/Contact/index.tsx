@@ -1,30 +1,32 @@
 'use client';
-import DecorativeCircles from '@/components/DecorativeCircles';
 import { motion } from 'framer-motion';
 import { FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi';
 import ContactCard from './ContactCard';
-
-const contactInfo = [
-    {
-        icon: FiLinkedin,
-        label: 'LinkedIn',
-        value: 'Thomaz Vasconcelos Mendes',
-        href: 'https://www.linkedin.com/in/thomazvmendes/',
-    },
-    {
-        icon: FiMail,
-        label: 'E-mail',
-        value: 'contatothomazvmendes@gmail.com',
-        href: 'mailto:contatothomazvmendes@gmail.com?subject=Contato%20pelo%20Portfólio&body=Teste%20de%20mensagem%20para%20Thomaz',
-    },
-    {
-        icon: FiMapPin,
-        label: 'Location',
-        value: 'Barueri, SP — Brasil',
-    },
-];
+import {useTranslations} from "next-intl";
 
 export default function Contact() {
+    const t = useTranslations("contact");
+
+    const contactInfo = [
+        {
+            icon: FiLinkedin,
+            label: t("info.linkedin.label"),
+            value: t("info.linkedin.value"),
+            href: 'https://www.linkedin.com/in/thomazvmendes/',
+        },
+        {
+            icon: FiMail,
+            label: t("info.email.label"),
+            value: t("info.email.value"),
+            href: `mailto:contatothomazvmendes@gmail.com?subject=${encodeURIComponent(t("info.email.subject"))}&body=${encodeURIComponent(t("info.email.body"))}`,
+        },
+        {
+            icon: FiMapPin,
+            label: t("info.location.label"),
+            value: t("info.location.value"),
+        },
+    ];
+
     return (
         <section
             id="contact"
@@ -41,7 +43,7 @@ export default function Contact() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        Get In Touch
+                        {t("title")}
                     </motion.h3>
 
                     <motion.h3
@@ -51,7 +53,7 @@ export default function Contact() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                        Let&apos;s build something incredible together!
+                        {t("subtitle")}
                     </motion.h3>
 
                     <div className="flex flex-wrap w-full gap-6 justify-center">
