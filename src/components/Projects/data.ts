@@ -1,5 +1,5 @@
 import {
-    SiExpress,
+  SiExpress,
   SiFastify,
   SiJavascript,
   SiMysql,
@@ -23,10 +23,10 @@ export const projects: Project[] = [
     techStack: [
       { name: "React", icon: SiReact },
       { name: "TypeScript", icon: SiTypescript },
-      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "Fastify", icon: SiFastify },
       { name: "Prisma", icon: SiPrisma },
       { name: "MySQL", icon: SiMysql },
-      { name: "Fastify", icon: SiFastify },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
     ],
     githubUrl: "",
     liveUrl: "https://portal.jandira.sp.gov.br/",
@@ -36,20 +36,27 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    year: 2025,
+    year: 2024,
     title: "QuasArt",
-    description: "A",
-    quote: "",
+    // description:
+    //   "Quasart é seu novo destino online para explorar o universo do entretenimento! De filmes a livros, passando por séries, stand-ups, podcasts e teatro, reunimos tudo em um só lugar para garantir que você encontre exatamente o que procura de maneira rápida e eficiente. Com uma plataforma desenhada para destacar o que é popular e adaptada às suas preferências, a descoberta do seu próximo passatempo favorito fica a apenas alguns cliques de distância. Seja você um fã ávido por novidades ou uma empresa buscando ampliar sua visibilidade, Quasart é o ponto de encontro perfeito",
+    // quote:
+    //   "Crie seu próprio universo e deixe fluir a sua criatividade com a criação de vídeos, resenhas e fichas.",
+    description:
+      "Quasart is your new go-to destination for exploring the world of entertainment — movies, series, books, stand-up, podcasts, and theater, all in one place. Built to highlight what's trending and tailored to your preferences, your next favorite is just a few clicks away. Whether you're a fan hungry for new discoveries or a business looking to expand your reach, Quasart is where it all comes together.",
+    quote:
+      "Create your own universe and let your creativity flow through videos, reviews, and profiles.",
     techStack: [
       { name: "Javascript", icon: SiJavascript },
       { name: "EJS", icon: SiJavascript },
       { name: "Express", icon: SiExpress },
       { name: "Node.js", icon: SiNodedotjs },
     ],
-    githubUrl: "https://github.com/th0mzzz/dashboard",
-    liveUrl: "https://dashboard-demo.vercel.app",
-    category: "frontend",
-    featured: true,
+    githubUrl: "https://github.com/Th0mzzz/QuasArt",
+    liveUrl: "https://quasart.onrender.com/",
+    category: "fullstack",
+    featured: false,
+    image: "../quasart-print.png",
   },
 ];
 
