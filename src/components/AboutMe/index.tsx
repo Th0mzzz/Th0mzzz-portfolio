@@ -47,7 +47,10 @@ export default function AboutMe() {
                             >
                                 {t("buttons.contact")}
                             </Button>
-                            <Button width={"100%"} margin={"0 auto"}>
+                            <Button width={"100%"} margin={"0 auto"} onClick={()=>{
+                                const file = t("buttons.file");
+                                window.open(file ?? "", "_blank")
+                            }}>
                                 {t("buttons.downloadCv")}
                             </Button>
                         </div>
