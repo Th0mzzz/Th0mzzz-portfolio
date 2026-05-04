@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FiLinkedin, FiMail, FiMapPin } from 'react-icons/fi';
 import ContactCard from './ContactCard';
 import {useTranslations} from "next-intl";
+import DecorativeCircles from '../DecorativeCircles';
 
 export default function Contact() {
     const t = useTranslations("contact");
@@ -71,6 +72,11 @@ export default function Contact() {
                 </div>
 
             </div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[300px]">
+                    <div className="absolute left-1/2 -bottom-100 -translate-x-1/2 -z-10">
+                        <DecorativeCircles position="bottom-center" multip={1} />
+                    </div>
+                </div>
         </section>
     );
 }

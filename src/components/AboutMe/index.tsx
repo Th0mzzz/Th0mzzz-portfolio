@@ -8,6 +8,7 @@ import {motion} from 'framer-motion';
 import DecorativeCircles from "@/components/DecorativeCircles";
 import BubbleHover from "@/components/BubbleHover";
 import {useTranslations} from "next-intl";
+import {scrollToHash} from "@/lib/smoothScroll";
 
 export default function AboutMe() {
     const t = useTranslations("about");
@@ -41,12 +42,7 @@ export default function AboutMe() {
                         </p>
                         <div className="flex gap-2 flex-col sm:flex-row">
                             <Button width={"100%"} margin={"0 auto"} onClick={() => {
-                                const contactSection = document.querySelector("#contact");
-                                if (contactSection) {
-                                    const top = contactSection.getBoundingClientRect().top + window.pageYOffset;
-                                    window.scrollTo({top});
-
-                                }
+                                scrollToHash("#contact");
                             }}
                             >
                                 {t("buttons.contact")}

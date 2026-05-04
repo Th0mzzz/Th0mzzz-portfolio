@@ -8,7 +8,7 @@ import Skills from "@/components/Skills";
 
 export default function Home() {
     return (
-        <main className="w-full overflow-x-clip overflow-y-hidden relative">
+        <main className="w-full overflow-x-clip overflow-y-hidden relative max-h-fit">
             <HeroSection />
             <AboutMe />
             <Skills />
@@ -16,7 +16,6 @@ export default function Home() {
             <MyJourney />
             <Contact />
             <Footer />
-           
         </main>
     );
 }

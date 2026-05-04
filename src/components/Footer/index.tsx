@@ -8,11 +8,9 @@ export default function Footer() {
 
     return (
         <>
-            <footer className="relative h-20 pt-30 pb-8">
+            <footer className="relative isolate h-20 pt-30 pb-8 overflow-hidden">
                 <p className="text text-center">{t("copyright", {year: new Date().getFullYear()})}</p>
-                <div className="absolute bottom-[-550px] left-1/2 transform -translate-x-1/2 -z-1">
-                    <DecorativeCircles position="bottom-center" multip={1.1} />
-                </div>
+                
             </footer>
         </>
     )

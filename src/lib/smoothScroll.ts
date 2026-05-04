@@ -23,6 +23,38 @@ export function smoothScrollTo(targetPosition: number, duration: number = 1000) 
 }
 
 
+export function scrollToHash(href: string, duration: number = 1000) {
+  if (typeof window === 'undefined') return;
+
+  const targetElement = document.querySelector(href);
+  if (!targetElement) {
+    console.warn(`Elemento não encontrado para: ${href}`);
+    return;
+  }
+
+  const offset = 10;
+  const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+  smoothScrollTo(targetPosition, duration);
+
+  if (history.pushState) {
+    history.pushState(null, '', href);
+  }
+}
+
+
+function scrollToInitialHash() {
+  const hash = window.location.hash;
+
+  if (!hash || hash === '#') return;
+
+  const targetElement = document.querySelector(hash);
+  if (!targetElement) return;
+
+  const offset = 10;
+  const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({ top: targetPosition, left: 0, behavior: 'auto' });
+}
+
 export function initSmoothScroll(duration: number = 1200) {
   if (typeof window === 'undefined') return () => {};
 
@@ -35,28 +67,28 @@ export function initSmoothScroll(duration: number = 1200) {
     const href = anchor.getAttribute('href');
     if (!href || href === '#') return;
 
-    const targetElement = document.querySelector(href);
-    if (!targetElement) {
-      console.warn(`Elemento não encontrado para: ${href}`);
-      return;
-    }
-
     e.preventDefault();
 
-
-    const offset = 10;
-    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-    smoothScrollTo(targetPosition, duration);
-
-    if (history.pushState) {
-      history.pushState(null, '', href);
-    }
+    scrollToHash(href, duration);
   };
 
   document.addEventListener('click', handleClick);
 
+  const runInitialHashScroll = () => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(scrollToInitialHash);
+    });
+  };
+
+  if (document.readyState === 'complete') {
+    runInitialHashScroll();
+  } else {
+    window.addEventListener('load', runInitialHashScroll, { once: true });
+  }
+
   return () => {
     document.removeEventListener('click', handleClick);
+    window.removeEventListener('load', runInitialHashScroll);
   };
 }
 
