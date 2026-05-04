@@ -31,7 +31,7 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="relative py-20 mt-40"
+            className="relative py-20 mt-80"
         >
 
             <div className="section">
@@ -48,7 +48,7 @@ export default function Contact() {
                     </motion.h3>
 
                     <motion.h3
-                        className="text text-gray-500 mb-10 max-w-md text-center"
+                        className="text mb-10 max-w-md text-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -72,11 +72,11 @@ export default function Contact() {
                 </div>
 
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[300px]">
-                    <div className="absolute left-1/2 -bottom-100 -translate-x-1/2 -z-10">
-                        <DecorativeCircles position="bottom-center" multip={1} />
-                    </div>
+            <div className="pointer-events-none absolute left-1/2 top-0 h-[300px] w-screen -translate-x-1/2 overflow-x-clip overflow-y-visible -z-10">
+                <div className="absolute left-1/2 bottom-0 -translate-x-1/2 -z-10">
+                    <DecorativeCircles position="bottom-center" multip={1} />
                 </div>
+            </div>
         </section>
     );
 }
