@@ -21,6 +21,8 @@ function Projects() {
 
     const tabsRef = useRef<{ [key: string]: HTMLButtonElement | null }>({});
     const carouselRef = useRef<HTMLDivElement>(null);
+    const prevBodyOverflow = useRef<string | null>(null);
+    const prevBodyPaddingRight = useRef<string | null>(null);
 
     const categories = projectCategoryKeys.map((key) => ({
         key,
@@ -73,14 +75,37 @@ function Projects() {
     const handleOpenModal = (project: Project) => {
         setSelectedProject(project);
         setIsModalOpen(true);
-        document.body.style.overflow = 'hidden';
+        if (typeof window !== 'undefined') {
+            const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+            if (scrollBarWidth > 0) {
+                prevBodyPaddingRight.current = document.body.style.paddingRight || '';
+                document.body.style.paddingRight = `${scrollBarWidth}px`;
+            }
+            prevBodyOverflow.current = document.body.style.overflow || '';
+            document.body.style.overflow = 'hidden';
+        }
     };
 
     const handleCloseModal = () => {
         setIsModalOpen(false);
         setSelectedProject(null);
-        document.body.style.overflow = 'auto';
+        if (typeof window !== 'undefined') {
+            document.body.style.overflow = prevBodyOverflow.current ?? '';
+            document.body.style.paddingRight = prevBodyPaddingRight.current ?? '';
+            prevBodyOverflow.current = null;
+            prevBodyPaddingRight.current = null;
+        }
     };
+
+    // Ensure we restore body styles if the component unmounts while modal is open
+    useEffect(() => {
+        return () => {
+            if (typeof window !== 'undefined') {
+                document.body.style.overflow = prevBodyOverflow.current ?? '';
+                document.body.style.paddingRight = prevBodyPaddingRight.current ?? '';
+            }
+        };
+    }, []);
 
     return (
         <section id={"projects"} className="relative py-20 bg-[var(--foreground)] z-100 overflow-hidden">
