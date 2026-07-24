@@ -39,10 +39,9 @@ export default function ContactCard({ icon: Icon, label, value, href, index }: C
     };
 
     const copyText = () => {
-        // prefer visible value (e.g., email text); fallback to href
         const text = value ?? href ?? '';
         if (!text) return;
-        // if mailto: link, extract email portion
+
         if (text.startsWith('mailto:')) {
             const mail = text.split(':')[1]?.split('?')[0] ?? text;
             doCopy(mail);
@@ -60,23 +59,23 @@ export default function ContactCard({ icon: Icon, label, value, href, index }: C
 
     const root = (
         <motion.div
-            className="flex items-center justify-between gap-4 p-5 bg-[var(--foreground)] rounded-2xl cursor-pointer group border border-transparent hover:border-[var(--primary)]/20 transition-colors"
+            className="max-w-full flex items-center justify-between gap-4 p-5 bg-[var(--foreground)] rounded-2xl cursor-pointer group border border-transparent hover:border-[var(--primary)]/20 transition-colors"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 * index, ease: 'easeOut' }}
             whileHover={{ scale: 1.02, y: -2 }}
         >
-            <div className="flex items-center gap-4 min-w-0">
+            <div className="flex items-center gap-4 min-w-0 max-w-full">
                 <div className="w-12 h-12 rounded-xl bg-[var(--primary)]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--primary)] transition-colors duration-300">
                     <Icon className="w-5 h-5 text-[var(--primary)] group-hover:text-white transition-colors duration-300" />
                 </div>
 
-                <div className="flex flex-col min-w-0">
+                <div className="flex flex-col min-w-0 max-w-full">
                     <span className="text text-gray-400 text-xs uppercase tracking-wider mb-0.5">
                         {label}
                     </span>
-                    <span className="link text-sm font-semibold truncate">
+                    <span className="link text-sm font-semibold max-w-full line-clamp-2 break-words">
                         {value}
                     </span>
                 </div>
@@ -101,7 +100,7 @@ export default function ContactCard({ icon: Icon, label, value, href, index }: C
 
     if (href) {
         return (
-            <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+            <a href={href} target="_blank" rel="noopener noreferrer" className="block max-w-full">
                 {root}
             </a>
         );

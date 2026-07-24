@@ -57,7 +57,7 @@ export default function Contact() {
                         {t("subtitle")}
                     </motion.h3>
 
-                    <div className="flex flex-wrap w-full gap-6 justify-center">
+                    <div className="max-w-[100%] flex flex-wrap w-full gap-6 justify-center">
                         {contactInfo.map((info, index) => (
                             <ContactCard
                                 key={info.label}
